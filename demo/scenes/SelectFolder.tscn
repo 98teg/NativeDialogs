@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/native_dialogs/bin/native_dialog_select_folder.gdns" type="Script" id=2]
+
+[node name="SelectFolder" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NativeDialogSelectFolder" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "Title example"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1010.0
+margin_bottom = 14.0
+text = "SelectFolder"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 1010.0
+margin_bottom = 98.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 915.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 915.0
+margin_bottom = 24.0
+
+[node name="Title" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 812.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title"]
+margin_top = 5.0
+margin_right = 32.0
+margin_bottom = 19.0
+text = "Title:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title"]
+margin_left = 36.0
+margin_right = 812.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Title example"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="ForcePath" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 816.0
+margin_right = 915.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ForcePath"]
+margin_top = 5.0
+margin_right = 71.0
+margin_bottom = 19.0
+text = "Force Path:"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ForcePath"]
+margin_left = 75.0
+margin_right = 99.0
+margin_bottom = 24.0
+
+[node name="InitialPath" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 915.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/InitialPath"]
+margin_top = 5.0
+margin_right = 73.0
+margin_bottom = 19.0
+text = "Initial Path:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/InitialPath"]
+margin_left = 77.0
+margin_right = 915.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Result" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 915.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Result"]
+margin_top = 5.0
+margin_right = 44.0
+margin_bottom = 19.0
+text = "Result:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/Result"]
+margin_left = 48.0
+margin_right = 915.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+editable = false
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 919.0
+margin_right = 1010.0
+margin_bottom = 80.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/CenterContainer"]
+margin_top = 30.0
+margin_right = 91.0
+margin_bottom = 50.0
+
+[node name="Show" type="Button" parent="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 45.0
+margin_bottom = 20.0
+text = "Show"
+
+[node name="Hide" type="Button" parent="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 49.0
+margin_right = 91.0
+margin_bottom = 20.0
+text = "Hide"
+
+[connection signal="folder_selected" from="NativeDialogSelectFolder" to="VBoxContainer/HBoxContainer/VBoxContainer/Result/LineEdit" method="set_text"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeDialogSelectFolder" method="set_title"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ForcePath/CheckBox" to="NativeDialogSelectFolder" method="set_force_path"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/InitialPath/LineEdit" to="NativeDialogSelectFolder" method="set_initial_path"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Show" to="NativeDialogSelectFolder" method="show"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Hide" to="NativeDialogSelectFolder" method="hide"]

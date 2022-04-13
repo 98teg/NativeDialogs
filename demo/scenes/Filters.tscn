@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Filters.gd" type="Script" id=2]
+
+[node name="Filters" type="VBoxContainer"]
+margin_top = 56.0
+margin_right = 915.0
+margin_bottom = 98.0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 915.0
+margin_bottom = 14.0
+text = "Filters:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 915.0
+margin_bottom = 42.0
+
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 19.0
+text = "Name:"
+
+[node name="NameLineEdit" type="LineEdit" parent="HBoxContainer"]
+margin_left = 46.0
+margin_right = 355.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="ExtensionsLabel" type="Label" parent="HBoxContainer"]
+margin_left = 359.0
+margin_top = 5.0
+margin_right = 432.0
+margin_bottom = 19.0
+text = "Extensions:"
+
+[node name="ExtensionsLineEdit" type="LineEdit" parent="HBoxContainer"]
+margin_left = 436.0
+margin_right = 745.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Add" type="Button" parent="HBoxContainer"]
+margin_left = 749.0
+margin_right = 823.0
+margin_bottom = 24.0
+text = "Add Filter"
+
+[node name="Clear" type="Button" parent="HBoxContainer"]
+margin_left = 827.0
+margin_right = 915.0
+margin_bottom = 24.0
+text = "Clear Filters"
+
+[connection signal="pressed" from="HBoxContainer/Add" to="." method="add_filter"]
+[connection signal="pressed" from="HBoxContainer/Add" to="HBoxContainer/Add" method="add_filter"]
+[connection signal="pressed" from="HBoxContainer/Clear" to="." method="clear_filters"]
+[connection signal="pressed" from="HBoxContainer/Clear" to="HBoxContainer/Clear" method="clear_filters"]
