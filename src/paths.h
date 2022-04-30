@@ -2,25 +2,30 @@
 #define PATHS_H
 
 #include <Godot.hpp>
+#include <ProjectSettings.hpp>
 
 #include <string>
 
 namespace godot {
 
 inline std::string pfd_path(const String &godot_path) {
+    String global_path = ProjectSettings::get_singleton()->globalize_path(godot_path);
+
 #if _WIN32
-    return godot_path.replace("/", "\\").alloc_c_string();
-#else
-    return godot_path.alloc_c_string();
+    global_path = global_path.replace("/", "\\");
 #endif
+
+    return global_path.alloc_c_string();
 }
 
 inline String godot_path(const std::string &pfd_path) {
+    String godot_path = pfd_path.c_str();
+
 #if _WIN32
-    return String(pfd_path.c_str()).replace("\\", "/");
-#else
-    return pfd_path.c_str();
+    godot_path = godot_path.replace("\\", "/");
 #endif
+
+    return godot_path;
 }
 
 }
