@@ -1,5 +1,6 @@
 #include "native_dialog_open_file.h"
 #include "filters.h"
+#include "paths.h"
 
 using namespace godot;
 
@@ -66,7 +67,7 @@ void NativeDialogOpenFile::_process(float delta) {
 
 	PoolStringArray result = PoolStringArray();
 	for(int i = 0; i < open_file->result().size(); i++) {
-		result.append(open_file->result()[i].c_str());
+		result.append(godot_path(open_file->result()[i]));
 	}
 
 	emit_signal("files_selected", result);
@@ -86,7 +87,7 @@ void NativeDialogOpenFile::show() {
 
 	open_file = new pfd::open_file(
 		title.alloc_c_string(),
-		initial_path.alloc_c_string(),
+		pfd_path(initial_path),
 		pfd_filters(filters),
 		multiselect ? pfd::opt::multiselect : pfd::opt::none
 	);

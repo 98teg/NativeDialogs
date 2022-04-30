@@ -1,5 +1,6 @@
 #include "native_dialog_save_file.h"
 #include "filters.h"
+#include "paths.h"
 
 using namespace godot;
 
@@ -64,7 +65,7 @@ void NativeDialogSaveFile::_init() {
 void NativeDialogSaveFile::_process(float delta) {
 	if(!save_file || !save_file->ready(0)) return;
 
-	emit_signal("file_selected", save_file->result().c_str());
+	emit_signal("file_selected", godot_path(save_file->result()));
 
 	hide();
 }
@@ -81,7 +82,7 @@ void NativeDialogSaveFile::show() {
 
 	save_file = new pfd::save_file(
 		title.alloc_c_string(),
-		initial_path.alloc_c_string(),
+		pfd_path(initial_path),
 		pfd_filters(filters),
 		force_overwrite ? pfd::opt::force_overwrite : pfd::opt::none
 	);

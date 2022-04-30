@@ -1,4 +1,5 @@
 #include "native_dialog_select_folder.h"
+#include "paths.h"
 
 using namespace godot;
 
@@ -56,7 +57,7 @@ void NativeDialogSelectFolder::_init() {
 void NativeDialogSelectFolder::_process(float delta) {
 	if(!select_folder || !select_folder->ready(0)) return;
 
-	emit_signal("folder_selected", select_folder->result().c_str());
+	emit_signal("folder_selected", godot_path(select_folder->result()));
 
 	hide();
 }
@@ -73,7 +74,7 @@ void NativeDialogSelectFolder::show() {
 
 	select_folder = new pfd::select_folder(
 		title.alloc_c_string(),
-		initial_path.alloc_c_string(),
+		pfd_path(initial_path),
 		force_path ? pfd::opt::force_path : pfd::opt::none
 	);
 }
