@@ -2,39 +2,42 @@ tool
 extends EditorPlugin
 
 
+const NativeDialogs = preload("./native_dialogs.gd")
+
+
 func _enter_tree():
 	add_custom_type(
 		"NativeDialogMessage",
 		"Node",
-		preload("./bin/native_dialog_message.gdns"),
+		NativeDialogs.Message,
 		preload("./icons/native_dialog_message.png")
 	)
 
 	add_custom_type(
 		"NativeDialogNotify",
 		"Node",
-		preload("./bin/native_dialog_notify.gdns"),
+		NativeDialogs.Notify,
 		preload("./icons/native_dialog_notify.png")
 	)
 
 	add_custom_type(
 		"NativeDialogOpenFile",
 		"Node",
-		preload("./bin/native_dialog_open_file.gdns"),
+		NativeDialogs.OpenFile,
 		preload("./icons/native_dialog_open_file.png")
 	)
 
 	add_custom_type(
 		"NativeDialogSaveFile",
 		"Node",
-		preload("./bin/native_dialog_save_file.gdns"),
+		NativeDialogs.SaveFile,
 		preload("./icons/native_dialog_save_file.png")
 	)
 
 	add_custom_type(
 		"NativeDialogSelectFolder",
 		"Node",
-		preload("./bin/native_dialog_select_folder.gdns"),
+		NativeDialogs.SelectFolder,
 		preload("./icons/native_dialog_select_folder.png")
 	)
 

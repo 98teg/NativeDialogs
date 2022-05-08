@@ -56,6 +56,4 @@ margin_bottom = 24.0
 text = "Clear Filters"
 
 [connection signal="pressed" from="HBoxContainer/Add" to="." method="add_filter"]
-[connection signal="pressed" from="HBoxContainer/Add" to="HBoxContainer/Add" method="add_filter"]
 [connection signal="pressed" from="HBoxContainer/Clear" to="." method="clear_filters"]
-[connection signal="pressed" from="HBoxContainer/Clear" to="HBoxContainer/Clear" method="clear_filters"]
