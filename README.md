@@ -7,7 +7,7 @@ Native Dialogs is a plugin for Godot that allows you to interact with OS-specifi
 Please note that this plugin follows [Godot's file paths format](https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html), and it uses [`ProjectSettings`' `globalize_path` method](https://docs.godotengine.org/en/stable/classes/class_projectsettings.html?highlight=ProjectSettings#class-projectsettings-method-globalize-path) to resolve `user://`, and `res://`, so consult the documentation if you have any doubt.
 
 ## How to use it
-As previously said, this plugin adds five new nodes. To use any of these nodes' functionality, you first need to add them to the scene. Them, update any of their properties. You also need to connect their signals to any method if you want to process the user's input. Finally, call the node's function that shows the native dialog to the user.
+As previously said, this plugin adds five new nodes. To use any of these nodes' functionality, you first need to add them to the scene. Then, update any of their properties. You also need to connect their signals to any method if you want to process the user's input. Finally, call the node's function that shows the native dialog to the user.
 
 ### Using the editor
 
