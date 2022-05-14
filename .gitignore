@@ -3,7 +3,6 @@ zconf.h
 zconf.h.included
 *.o
 *.os
-*.dylib
 .import/
 *.dblite
 *.exp
