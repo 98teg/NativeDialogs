@@ -3,7 +3,7 @@ name: 🪟 Windows Builds
 on:
   push:
     branches: [ master ]
-    paths-ignore: [ demo doc .gitattributes .gitignore LICENSE README.md ]
+    paths-ignore: [ demo/** doc/** .gitattributes .gitignore LICENSE README.md ]
 
 # Global Settings
 env:
