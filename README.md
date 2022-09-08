@@ -40,6 +40,26 @@ If you want to instantiate nodes using GDScript, you may follow this example:
 
 ![Example using code](./doc/images/code_usage.png)
 
+## How to build it
+Here is an overview on how to compile the plugin from source:
+1. Check the [official Godot documentation](https://docs.godotengine.org/es/stable/development/compiling/index.html) on how to compile the engine. You won't need to compile it, but it would help you install the necessary dependencies on your target platform.
+2. Clone this repository recursively:
+    ```
+    git clone --recursive https://github.com/98teg/NativeDialogs
+    cd NativeDialogs
+    ```
+3. Build the C++ bindings, replacing `<platform>` with `windows`, `linux` or `osx` depending on your OS.
+    ```
+    cd godot-cpp
+    scons platform=<platform> generate_bindings=yes -j4
+    cd ..
+    ```
+4. Compile the plugin:
+    ```
+    scons platform=<platform>
+    ```
+5. If you have encountered any problems, check the [official Godot documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html) on how to build a GDNative plugin.
+
 ## Class `NativeDialogMessage`
 
 Shows a brief text to the user and presents some options to choose.
