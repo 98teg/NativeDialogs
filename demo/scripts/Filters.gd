@@ -1,11 +1,11 @@
 extends VBoxContainer
 
 
-export(NodePath) var native_dialog_path
+@export var native_dialog_path: NodePath
 
-onready var native_dialog = get_node(native_dialog_path)
-onready var name_line_edit = get_node("HBoxContainer/NameLineEdit")
-onready var extensions_line_edit = get_node("HBoxContainer/ExtensionsLineEdit")
+@onready var native_dialog = get_node(native_dialog_path)
+@onready var name_line_edit = get_node("HBoxContainer/NameLineEdit")
+@onready var extensions_line_edit = get_node("HBoxContainer/ExtensionsLineEdit")
 
 
 func _ready():

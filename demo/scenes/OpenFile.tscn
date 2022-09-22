@@ -1,133 +1,125 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://c800ipc8sr7iw"]
 
-[ext_resource path="res://addons/native_dialogs/bin/native_dialog_open_file.gdns" type="Script" id=1]
-[ext_resource path="res://scripts/FilesSelectedResult.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Filters.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" path="res://scripts/FilesSelectedResult.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://c4rs1tn7jynen" path="res://scenes/Filters.tscn" id="3"]
 
 [node name="OpenFile" type="PanelContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="NativeDialogOpenFile" type="Node" parent="."]
-script = ExtResource( 1 )
-title = "Title example"
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1010.0
-margin_bottom = 14.0
+offset_right = 1152.0
+offset_bottom = 26.0
 text = "OpenFile"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 18.0
-margin_right = 1010.0
-margin_bottom = 134.0
+offset_top = 30.0
+offset_right = 1152.0
+offset_bottom = 191.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 915.0
-margin_bottom = 116.0
+offset_right = 1050.0
+offset_bottom = 161.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 915.0
-margin_bottom = 24.0
+offset_right = 1050.0
+offset_bottom = 31.0
 
 [node name="Title" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 807.0
-margin_bottom = 24.0
+offset_right = 928.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title"]
-margin_top = 5.0
-margin_right = 32.0
-margin_bottom = 19.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 28.0
 text = "Title:"
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title"]
-margin_left = 36.0
-margin_right = 807.0
-margin_bottom = 24.0
+offset_left = 42.0
+offset_right = 928.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 text = "Title example"
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="Multiselect" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 811.0
-margin_right = 915.0
-margin_bottom = 24.0
+offset_left = 932.0
+offset_right = 1050.0
+offset_bottom = 31.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Multiselect"]
-margin_top = 5.0
-margin_right = 76.0
-margin_bottom = 19.0
+offset_top = 2.0
+offset_right = 90.0
+offset_bottom = 28.0
 text = "Multiselect:"
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Multiselect"]
-margin_left = 80.0
-margin_right = 104.0
-margin_bottom = 24.0
+offset_left = 94.0
+offset_right = 118.0
+offset_bottom = 31.0
 
 [node name="InitialPath" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 28.0
-margin_right = 915.0
-margin_bottom = 52.0
+offset_top = 35.0
+offset_right = 1050.0
+offset_bottom = 66.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/InitialPath"]
-margin_top = 5.0
-margin_right = 73.0
-margin_bottom = 19.0
-text = "Initial Path:"
+offset_top = 2.0
+offset_right = 110.0
+offset_bottom = 28.0
+text = "Initial Path3D:"
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/InitialPath"]
-margin_left = 77.0
-margin_right = 915.0
-margin_bottom = 24.0
+offset_left = 114.0
+offset_right = 1050.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 
-[node name="Filters" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
-native_dialog_path = NodePath("../../../../NativeDialogOpenFile")
+[node name="Filters" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3")]
+offset_top = 70.0
+offset_right = 1050.0
+offset_bottom = 131.0
+native_dialog_path = NodePath("")
 
 [node name="Result" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 102.0
-margin_right = 915.0
-margin_bottom = 116.0
-script = ExtResource( 2 )
+offset_top = 135.0
+offset_right = 1050.0
+offset_bottom = 161.0
+script = ExtResource("2")
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Result"]
-margin_right = 915.0
-margin_bottom = 14.0
+offset_right = 1050.0
+offset_bottom = 26.0
 text = "Result:"
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 919.0
-margin_right = 1010.0
-margin_bottom = 116.0
+offset_left = 1054.0
+offset_right = 1152.0
+offset_bottom = 161.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/CenterContainer"]
-margin_top = 48.0
-margin_right = 91.0
-margin_bottom = 68.0
+offset_top = 65.0
+offset_right = 98.0
+offset_bottom = 96.0
 
 [node name="Show" type="Button" parent="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 45.0
-margin_bottom = 20.0
+offset_right = 50.0
+offset_bottom = 31.0
 text = "Show"
 
 [node name="Hide" type="Button" parent="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer"]
-margin_left = 49.0
-margin_right = 91.0
-margin_bottom = 20.0
+offset_left = 54.0
+offset_right = 98.0
+offset_bottom = 31.0
 text = "Hide"
-
-[connection signal="files_selected" from="NativeDialogOpenFile" to="VBoxContainer/HBoxContainer/VBoxContainer/Result" method="show_result"]
-[connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeDialogOpenFile" method="set_title"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Multiselect/CheckBox" to="NativeDialogOpenFile" method="set_multiselect"]
-[connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/InitialPath/LineEdit" to="NativeDialogOpenFile" method="set_initial_path"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Show" to="NativeDialogOpenFile" method="show"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Hide" to="NativeDialogOpenFile" method="hide"]

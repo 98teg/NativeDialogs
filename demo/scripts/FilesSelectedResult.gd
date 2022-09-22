@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 
-func show_result(result: PoolStringArray):
+func show_result(result: PackedStringArray):
 	for child in get_children():
 		if child is LineEdit:
 			child.free()

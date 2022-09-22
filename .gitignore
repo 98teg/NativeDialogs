@@ -14,3 +14,4 @@ Thumbs.db
 demo/bin
 export_presets.cfg
 .vscode
+.godot

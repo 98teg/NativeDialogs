@@ -1,0 +1,12 @@
+[configuration]
+
+entry_symbol = "native_dialogs_init"
+
+[libraries]
+
+macos.debug = "bin/libnativedialogs.macos.debug.framework"
+macos.release = "bin/libnativedialogs.macos.release.framework"
+windows.debug.x86_64 = "bin/libnativedialogs.windows.debug.x86_64.dll"
+windows.release.x86_64 = "bin/libnativedialogs.windows.release.x86_64.dll"
+linux.debug.x86_64 = "bin/libnativedialogs.linux.debug.x86_64.so"
+linux.release.x86_64 = "bin/libnativedialogs.linux.release.x86_64.so"
