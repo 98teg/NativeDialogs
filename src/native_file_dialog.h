@@ -31,7 +31,7 @@ public:
 
 private:
 	String title;
-	String initial_path;
+	String root_subfolder;
     PackedStringArray filters;
 	FileMode mode;
     Access access;
@@ -40,11 +40,13 @@ private:
 	pfd::save_file* save_file = nullptr;
 	pfd::select_folder* select_folder = nullptr;
 
-    PackedStringArray default_filters();
-    std::vector<std::string> pfd_filters();
+    PackedStringArray get_default_filters() const;
+    std::vector<std::string> get_pfd_filters() const;
 
-    std::string pfd_path(const String &godot_path);
-    String godot_path(const std::string &pfd_path);
+    std::string get_pfd_path() const;
+    String get_godot_path(const std::string &pfd_path) const;
+
+	String get_root_string() const;
 public:
 	NativeFileDialog();
 	~NativeFileDialog();
@@ -56,16 +58,19 @@ public:
 	void hide();
 
 	void set_title(const String &p_title);
-	String get_title();
+	String get_title() const;
 
-	void set_initial_path(const String &p_initial_path);
-	String get_initial_path();
+	void set_root_subfolder(const String &p_root);
+	String get_root_subfolder() const;
 
 	void set_mode(FileMode p_mode);
-	FileMode get_mode();
+	FileMode get_mode() const;
+
+	void set_access(Access p_access);
+	Access get_access() const;
 
 	void set_filters(const PackedStringArray &p_filters);
-	PackedStringArray get_filters();
+	PackedStringArray get_filters() const;
 	void add_filter(const String &filter);
 	void clear_filters();
 };
