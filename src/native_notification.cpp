@@ -29,11 +29,25 @@ void NativeNotification::_bind_methods() {
 NativeNotification::NativeNotification() {
 	title = "";
 	text = "";
-	icon = pfd::icon::info;
+	icon = ICON_INFO;
 }
 
 void NativeNotification::send() {
-	pfd::notify(title.utf8().get_data(), text.utf8().get_data(), icon);
+	pfd::icon pfd_icon;
+
+	switch(icon) {
+		case ICON_INFO:
+			pfd_icon = pfd::icon::info;
+			break;
+		case ICON_WARNING:
+			pfd_icon = pfd::icon::warning;
+			break;
+		case ICON_ERROR:
+			pfd_icon = pfd::icon::error;
+			break;
+	}
+
+	pfd::notify(title.utf8().get_data(), text.utf8().get_data(), pfd_icon);
 }
 
 void NativeNotification::set_title(const String &p_title) {
@@ -55,25 +69,9 @@ String NativeNotification::get_text() {
 void NativeNotification::set_icon(Icon p_icon) {
 	ERR_FAIL_INDEX(p_icon, 3);
 
-	switch(p_icon){
-		case ICON_WARNING:
-			icon = pfd::icon::warning;
-			break;
-		case ICON_ERROR:
-			icon = pfd::icon::error;
-			break;
-		default:
-			icon = pfd::icon::info;
-	}
+	icon = p_icon;
 }
 
 NativeNotification::Icon NativeNotification::get_icon() {
-	switch(icon){
-		case pfd::icon::warning:
-			return ICON_WARNING;
-		case pfd::icon::error:
-			return ICON_ERROR;
-		default:
-			return ICON_INFO;
-	}
+	return icon;
 }

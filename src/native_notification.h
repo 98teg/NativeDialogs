@@ -15,11 +15,6 @@ class NativeNotification : public Node {
 protected:
 	static void _bind_methods();
 
-private:
-	String title;
-	String text;
-	pfd::icon icon;
-
 public:
 	enum Icon {
 		ICON_INFO = 0,
@@ -27,6 +22,12 @@ public:
 		ICON_ERROR= 2
 	};
 
+private:
+	String title;
+	String text;
+	Icon icon;
+
+public:
 	NativeNotification();
 
 	void send();
