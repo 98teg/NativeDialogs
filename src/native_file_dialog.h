@@ -31,6 +31,7 @@ public:
 
 private:
 	String title;
+	bool mode_overrides_title;
 	String root_subfolder;
     PackedStringArray filters;
 	FileMode mode;
@@ -59,6 +60,9 @@ public:
 
 	void set_title(const String &p_title);
 	String get_title() const;
+
+	void set_mode_overrides_title(bool p_override);
+	bool is_mode_overriding_title();
 
 	void set_root_subfolder(const String &p_root);
 	String get_root_subfolder() const;

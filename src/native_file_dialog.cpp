@@ -1,5 +1,6 @@
 #include <godot_cpp/classes/project_settings.hpp>
 #include <godot_cpp/classes/os.hpp>
+#include <godot_cpp/classes/translation_server.hpp>
 
 #include "native_file_dialog.h"
 
@@ -9,6 +10,10 @@ void NativeFileDialog::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_title"), &NativeFileDialog::set_title);
     ClassDB::bind_method(D_METHOD("get_title"), &NativeFileDialog::get_title);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
+
+    ClassDB::bind_method(D_METHOD("set_mode_overrides_title"), &NativeFileDialog::set_mode_overrides_title);
+    ClassDB::bind_method(D_METHOD("is_mode_overriding_title"), &NativeFileDialog::is_mode_overriding_title);
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "mode_overrides_title"), "set_mode_overrides_title", "is_mode_overriding_title");
 
     ClassDB::bind_method(D_METHOD("set_root_subfolder"), &NativeFileDialog::set_root_subfolder);
     ClassDB::bind_method(D_METHOD("get_root_subfolder"), &NativeFileDialog::get_root_subfolder);
@@ -84,7 +89,10 @@ void NativeFileDialog::_bind_methods() {
 }
 
 NativeFileDialog::NativeFileDialog() {
-	title = "";
+	title = TranslationServer::get_singleton()->translate("Save a File");
+	mode_overrides_title = true;
+	mode = FILE_MODE_SAVE_FILE;
+	access = ACCESS_RESOURCES;
 	root_subfolder = "";
 	filters = get_default_filters();
 }
@@ -135,7 +143,7 @@ void NativeFileDialog::show() {
 
 	if(mode == FILE_MODE_OPEN_FILE || mode == FILE_MODE_OPEN_FILES) {
 		open_file = new pfd::open_file(
-			title.utf8().get_data(),
+			get_title().utf8().get_data(),
 			get_pfd_path(),
 			get_pfd_filters(),
 			mode == FILE_MODE_OPEN_FILES ? pfd::opt::multiselect : pfd::opt::none
@@ -144,7 +152,7 @@ void NativeFileDialog::show() {
 
 	if(mode == FILE_MODE_SAVE_FILE) {
 		save_file = new pfd::save_file(
-			title.utf8().get_data(),
+			get_title().utf8().get_data(),
 			get_pfd_path(),
 			get_pfd_filters(),
 			pfd::opt::none
@@ -153,7 +161,7 @@ void NativeFileDialog::show() {
 
 	if(mode == FILE_MODE_OPEN_DIR) {
 		select_folder = new pfd::select_folder(
-			title.utf8().get_data(),
+			get_title().utf8().get_data(),
 			get_pfd_path(),
 			pfd::opt::none
 		);
@@ -191,8 +199,30 @@ void NativeFileDialog::set_title(const String &p_title) {
 }
 
 String NativeFileDialog::get_title() const {
+	if (mode_overrides_title) {
+		switch (mode) {
+			case FILE_MODE_OPEN_FILE:
+				return TranslationServer::get_singleton()->translate("Open a File");
+			case FILE_MODE_OPEN_FILES:
+				return TranslationServer::get_singleton()->translate("Open File(s)");
+			case FILE_MODE_OPEN_DIR:
+				return TranslationServer::get_singleton()->translate("Open a Directory");
+			case FILE_MODE_SAVE_FILE:
+				return TranslationServer::get_singleton()->translate("Save a File");
+		}
+	}
+
 	return title;
 }
+
+void NativeFileDialog::set_mode_overrides_title(bool p_override) {
+	mode_overrides_title = p_override;
+}
+
+bool NativeFileDialog::is_mode_overriding_title() {
+	return mode_overrides_title;
+}
+
 
 void NativeFileDialog::set_root_subfolder(const String &p_root) {
 	root_subfolder = p_root;
