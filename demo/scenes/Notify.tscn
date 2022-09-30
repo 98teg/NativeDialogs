@@ -10,9 +10,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NativeDialogNotify" type="NativeDialogNotify" parent="."]
-title = "Title example"
-text = "Text example"
+[node name="NativeNotification" type="NativeNotification" parent="."]
+title = "Hola"
+text = "Mundo"
 icon = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -135,4 +135,4 @@ offset_bottom = 31.0
 text = "Send"
 
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/Text/TextEdit" to="VBoxContainer/HBoxContainer/VBoxContainer/Text/TextEdit" method="emit_text"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Send" to="NativeDialogNotify" method="send"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Send" to="NativeNotification" method="send"]

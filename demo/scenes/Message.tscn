@@ -12,6 +12,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="NativeMessage" type="NativeMessage" parent="."]
+title = "Hola"
+text = "Mundo"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 offset_right = 1152.0
@@ -196,10 +200,7 @@ offset_right = 98.0
 offset_bottom = 31.0
 text = "Hide"
 
-[node name="NativeDialogMessage" type="NativeDialogMessage" parent="."]
-choice = 1
+[node name="NativeFileDialog" type="NativeFileDialog" parent="."]
 
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/Text/TextEdit" to="VBoxContainer/HBoxContainer/VBoxContainer/Text/TextEdit" method="emit_text"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Show" to="NativeDialogMessage" method="show"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Hide" to="NativeDialogMessage" method="hide"]
-[connection signal="result_selected" from="NativeDialogMessage" to="VBoxContainer/HBoxContainer/VBoxContainer/Result/LineEdit" method="set_result"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CenterContainer/HBoxContainer/Show" to="NativeFileDialog" method="show"]

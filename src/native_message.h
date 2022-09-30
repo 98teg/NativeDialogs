@@ -21,7 +21,7 @@ private:
 	pfd::choice choice;
 	pfd::icon icon;
 
-	pfd::message* message;
+	pfd::message* message = nullptr;
 
 public:
 	enum Choice {

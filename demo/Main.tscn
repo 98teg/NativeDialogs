@@ -15,13 +15,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
 offset_right = 1080.0
 offset_bottom = 245.0
 size_flags_horizontal = 3
 
 [node name="Message" parent="VBoxContainer" instance=ExtResource("1_6mfj4")]
-layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -31,7 +29,6 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Notify" parent="VBoxContainer" instance=ExtResource("2")]
-layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -40,12 +37,3 @@ offset_right = 1080.0
 offset_bottom = 245.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="FileDialog" type="FileDialog" parent="VBoxContainer"]
-title = "Save a Fileaaaa"
-size = Vector2i(957, 484)
-visible = true
-ok_button_text = "Save"
-access = 2
-root_subfolder = "scenes"
-filters = PackedStringArray("", "")
