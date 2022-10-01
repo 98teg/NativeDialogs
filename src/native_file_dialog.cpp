@@ -7,29 +7,21 @@
 using namespace godot;
 
 void NativeFileDialog::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("set_title"), &NativeFileDialog::set_title);
-    ClassDB::bind_method(D_METHOD("get_title"), &NativeFileDialog::get_title);
-	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
-
     ClassDB::bind_method(D_METHOD("set_mode_overrides_title"), &NativeFileDialog::set_mode_overrides_title);
     ClassDB::bind_method(D_METHOD("is_mode_overriding_title"), &NativeFileDialog::is_mode_overriding_title);
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "mode_overrides_title"), "set_mode_overrides_title", "is_mode_overriding_title");
 
-    ClassDB::bind_method(D_METHOD("set_root_subfolder"), &NativeFileDialog::set_root_subfolder);
-    ClassDB::bind_method(D_METHOD("get_root_subfolder"), &NativeFileDialog::get_root_subfolder);
-	ADD_PROPERTY(PropertyInfo(Variant::STRING, "root_subfolder"), "set_root_subfolder", "get_root_subfolder");
-
-    ClassDB::bind_method("set_mode", &NativeFileDialog::set_mode);
-    ClassDB::bind_method("get_mode", &NativeFileDialog::get_mode);
+    ClassDB::bind_method("set_file_mode", &NativeFileDialog::set_file_mode);
+    ClassDB::bind_method("get_file_mode", &NativeFileDialog::get_file_mode);
 	ADD_PROPERTY(
 		PropertyInfo(
 			Variant::INT,
-			"mode",
+			"file_mode",
 			PROPERTY_HINT_ENUM,
-			"Open file,Open files,Open dir,Save file"
+			"Open File,Open Files,Open Folder,Save"
 		),
-		"set_mode",
-		"get_mode"
+		"set_file_mode",
+		"get_file_mode"
 	);
 
     ClassDB::bind_method("set_access", &NativeFileDialog::set_access);
@@ -45,6 +37,20 @@ void NativeFileDialog::_bind_methods() {
 		"get_access"
 	);
 
+    ClassDB::bind_method(D_METHOD("set_root_subfolder"), &NativeFileDialog::set_root_subfolder);
+    ClassDB::bind_method(D_METHOD("get_root_subfolder"), &NativeFileDialog::get_root_subfolder);
+	ADD_PROPERTY(PropertyInfo(Variant::STRING, "root_subfolder"), "set_root_subfolder", "get_root_subfolder");
+
+	ClassDB::bind_method(D_METHOD("set_filters", "filters"), &NativeFileDialog::set_filters);
+	ClassDB::bind_method(D_METHOD("get_filters"), &NativeFileDialog::get_filters);
+	ClassDB::bind_method(D_METHOD("add_filter", "filter", "description"), &NativeFileDialog::add_filter, DEFVAL(""));
+	ClassDB::bind_method(D_METHOD("clear_filters"), &NativeFileDialog::clear_filters);
+	ADD_PROPERTY(PropertyInfo(Variant::PACKED_STRING_ARRAY, "filters"), "set_filters", "get_filters");
+
+    ClassDB::bind_method(D_METHOD("set_title"), &NativeFileDialog::set_title);
+    ClassDB::bind_method(D_METHOD("get_title"), &NativeFileDialog::get_title);
+	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
+
     ClassDB::bind_method("show", &NativeFileDialog::show);
     ClassDB::bind_method("hide", &NativeFileDialog::hide);
 
@@ -53,7 +59,7 @@ void NativeFileDialog::_bind_methods() {
 			"file_selected",
 			PropertyInfo(
 				Variant::STRING,
-				"file"
+				"path"
 			)
 		)
 	);
@@ -63,7 +69,7 @@ void NativeFileDialog::_bind_methods() {
 			"files_selected",
 			PropertyInfo(
 				Variant::PACKED_STRING_ARRAY,
-				"files"
+				"paths"
 			)
 		)
 	);
@@ -89,12 +95,12 @@ void NativeFileDialog::_bind_methods() {
 }
 
 NativeFileDialog::NativeFileDialog() {
-	title = TranslationServer::get_singleton()->translate("Save a File");
 	mode_overrides_title = true;
 	mode = FILE_MODE_SAVE_FILE;
 	access = ACCESS_RESOURCES;
 	root_subfolder = "";
-	filters = get_default_filters();
+	filters = PackedStringArray();
+	title = TranslationServer::get_singleton()->translate("Save a File");
 }
 
 NativeFileDialog::~NativeFileDialog() {
@@ -194,33 +200,50 @@ void NativeFileDialog::hide() {
 	}
 }
 
-void NativeFileDialog::set_title(const String &p_title) {
-	title = p_title;
-}
-
-String NativeFileDialog::get_title() const {
-	if (mode_overrides_title) {
-		switch (mode) {
-			case FILE_MODE_OPEN_FILE:
-				return TranslationServer::get_singleton()->translate("Open a File");
-			case FILE_MODE_OPEN_FILES:
-				return TranslationServer::get_singleton()->translate("Open File(s)");
-			case FILE_MODE_OPEN_DIR:
-				return TranslationServer::get_singleton()->translate("Open a Directory");
-			case FILE_MODE_SAVE_FILE:
-				return TranslationServer::get_singleton()->translate("Save a File");
-		}
+void NativeFileDialog::set_mode_overrides_title(bool p_override) {
+	if (mode_overrides_title == p_override) {
+		return;
 	}
 
-	return title;
-}
-
-void NativeFileDialog::set_mode_overrides_title(bool p_override) {
 	mode_overrides_title = p_override;
+
+	override_title();
 }
 
 bool NativeFileDialog::is_mode_overriding_title() {
 	return mode_overrides_title;
+}
+
+void NativeFileDialog::set_file_mode(FileMode p_mode) {
+	ERR_FAIL_INDEX(p_mode, 4);
+
+	if (mode == p_mode) {
+		return;
+	}
+
+	mode = p_mode;
+
+	override_title();
+}
+
+NativeFileDialog::FileMode NativeFileDialog::get_file_mode() const {
+	return mode;
+}
+
+void NativeFileDialog::set_access(Access p_access) {
+	ERR_FAIL_INDEX(p_access, 3);
+
+	if (access == p_access) {
+		return;
+	}
+
+	access = p_access;
+
+	set_root_subfolder("");
+}
+
+NativeFileDialog::Access NativeFileDialog::get_access() const {
+	return access;
 }
 
 
@@ -232,46 +255,34 @@ String NativeFileDialog::get_root_subfolder() const {
 	return root_subfolder;
 }
 
-void NativeFileDialog::set_mode(FileMode p_mode) {
-	ERR_FAIL_INDEX(p_mode, 4);
-
-	mode = p_mode;
-}
-
-NativeFileDialog::FileMode NativeFileDialog::get_mode() const {
-	return mode;
-}
-
-void NativeFileDialog::set_access(Access p_access) {
-	ERR_FAIL_INDEX(p_access, 3);
-
-	access = p_access;
-}
-
-NativeFileDialog::Access NativeFileDialog::get_access() const {
-	return access;
-}
-
 void NativeFileDialog::set_filters(const PackedStringArray &p_filters) {
 	filters = p_filters;
-}
-
-void NativeFileDialog::add_filter(const String &filter) {
-	filters.append(filter);
-}
-
-void NativeFileDialog::clear_filters() {
-	filters.resize(0);
 }
 
 PackedStringArray NativeFileDialog::get_filters() const {
 	return filters;
 }
 
-PackedStringArray NativeFileDialog::get_default_filters() const {
-    PackedStringArray default_filters = PackedStringArray();
-    default_filters.append("* ; All Files");
-    return default_filters;
+void NativeFileDialog::add_filter(const String &p_filter, const String &p_description) {
+	ERR_FAIL_COND_MSG(p_filter.begins_with("."), "Filter must be \"filename.extension\", can't start with dot.");
+
+	if (p_description.is_empty()) {
+		filters.push_back(p_filter);
+	} else {
+		filters.push_back(p_filter + " ; " + p_description);
+	}
+}
+
+void NativeFileDialog::clear_filters() {
+	filters.clear();
+}
+
+void NativeFileDialog::set_title(const String &p_title) {
+	title = p_title;
+}
+
+String NativeFileDialog::get_title() const {
+	return title;
 }
 
 std::vector<std::string> NativeFileDialog::get_pfd_filters() const {
@@ -280,12 +291,13 @@ std::vector<std::string> NativeFileDialog::get_pfd_filters() const {
     for(int i = 0; i < filters.size(); i++) {
         PackedStringArray filter = filters[i].split(" ; ");
 
-        String name = filter[1];
+		String name = filter.size() == 2 ? filter[1] : "";
         String extensions = filter[0].replace(", ", " ");
 
         pfd_filters.push_back(name.utf8().get_data());
         pfd_filters.push_back(extensions.utf8().get_data());
     }
+
     return pfd_filters;
 }
 
@@ -308,6 +320,26 @@ String NativeFileDialog::get_godot_path(const std::string &pfd_path) const {
 #endif
 
     return godot_path;
+}
+
+void NativeFileDialog::override_title() {
+	if (!mode_overrides_title) {
+		return;
+	}
+
+	switch (mode) {
+		case FILE_MODE_OPEN_FILE:
+			set_title(TranslationServer::get_singleton()->translate("Open a File"));
+			break;
+		case FILE_MODE_OPEN_FILES:
+			set_title(TranslationServer::get_singleton()->translate("Open File(s)"));
+			break;
+		case FILE_MODE_OPEN_DIR:
+			set_title(TranslationServer::get_singleton()->translate("Open a Directory"));
+			break;
+		case FILE_MODE_SAVE_FILE:
+			set_title(TranslationServer::get_singleton()->translate("Save a File"));
+	}
 }
 
 String NativeFileDialog::get_root_string() const {

@@ -30,23 +30,24 @@ public:
     };
 
 private:
-	String title;
 	bool mode_overrides_title;
-	String root_subfolder;
-    PackedStringArray filters;
 	FileMode mode;
     Access access;
+	String root_subfolder;
+    PackedStringArray filters;
+	String title;
 
 	pfd::open_file* open_file = nullptr;
 	pfd::save_file* save_file = nullptr;
 	pfd::select_folder* select_folder = nullptr;
 
-    PackedStringArray get_default_filters() const;
     std::vector<std::string> get_pfd_filters() const;
 
     std::string get_pfd_path() const;
     String get_godot_path(const std::string &pfd_path) const;
 
+	void override_title();
+	
 	String get_root_string() const;
 public:
 	NativeFileDialog();
@@ -58,25 +59,25 @@ public:
 	void show();
 	void hide();
 
-	void set_title(const String &p_title);
-	String get_title() const;
-
 	void set_mode_overrides_title(bool p_override);
 	bool is_mode_overriding_title();
 
-	void set_root_subfolder(const String &p_root);
-	String get_root_subfolder() const;
-
-	void set_mode(FileMode p_mode);
-	FileMode get_mode() const;
+	void set_file_mode(FileMode p_mode);
+	FileMode get_file_mode() const;
 
 	void set_access(Access p_access);
 	Access get_access() const;
 
+	void set_root_subfolder(const String &p_root);
+	String get_root_subfolder() const;
+
 	void set_filters(const PackedStringArray &p_filters);
 	PackedStringArray get_filters() const;
-	void add_filter(const String &filter);
+	void add_filter(const String &p_filter, const String &p_description);
 	void clear_filters();
+
+	void set_title(const String &p_title);
+	String get_title() const;
 };
 
 }
