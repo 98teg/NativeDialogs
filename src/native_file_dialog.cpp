@@ -7,6 +7,10 @@
 using namespace godot;
 
 void NativeFileDialog::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("set_title"), &NativeFileDialog::set_title);
+    ClassDB::bind_method(D_METHOD("get_title"), &NativeFileDialog::get_title);
+	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
+
     ClassDB::bind_method(D_METHOD("set_mode_overrides_title"), &NativeFileDialog::set_mode_overrides_title);
     ClassDB::bind_method(D_METHOD("is_mode_overriding_title"), &NativeFileDialog::is_mode_overriding_title);
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "mode_overrides_title"), "set_mode_overrides_title", "is_mode_overriding_title");
@@ -46,10 +50,6 @@ void NativeFileDialog::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("add_filter", "filter", "description"), &NativeFileDialog::add_filter, DEFVAL(""));
 	ClassDB::bind_method(D_METHOD("clear_filters"), &NativeFileDialog::clear_filters);
 	ADD_PROPERTY(PropertyInfo(Variant::PACKED_STRING_ARRAY, "filters"), "set_filters", "get_filters");
-
-    ClassDB::bind_method(D_METHOD("set_title"), &NativeFileDialog::set_title);
-    ClassDB::bind_method(D_METHOD("get_title"), &NativeFileDialog::get_title);
-	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
 
     ClassDB::bind_method("show", &NativeFileDialog::show);
     ClassDB::bind_method("hide", &NativeFileDialog::hide);
@@ -200,6 +200,14 @@ void NativeFileDialog::hide() {
 	}
 }
 
+void NativeFileDialog::set_title(const String &p_title) {
+	title = p_title;
+}
+
+String NativeFileDialog::get_title() const {
+	return title;
+}
+
 void NativeFileDialog::set_mode_overrides_title(bool p_override) {
 	if (mode_overrides_title == p_override) {
 		return;
@@ -275,14 +283,6 @@ void NativeFileDialog::add_filter(const String &p_filter, const String &p_descri
 
 void NativeFileDialog::clear_filters() {
 	filters.clear();
-}
-
-void NativeFileDialog::set_title(const String &p_title) {
-	title = p_title;
-}
-
-String NativeFileDialog::get_title() const {
-	return title;
 }
 
 std::vector<std::string> NativeFileDialog::get_pfd_filters() const {

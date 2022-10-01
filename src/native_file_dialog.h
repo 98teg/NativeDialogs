@@ -30,12 +30,12 @@ public:
     };
 
 private:
+	String title;
 	bool mode_overrides_title;
 	FileMode mode;
     Access access;
 	String root_subfolder;
     PackedStringArray filters;
-	String title;
 
 	pfd::open_file* open_file = nullptr;
 	pfd::save_file* save_file = nullptr;
@@ -59,6 +59,9 @@ public:
 	void show();
 	void hide();
 
+	void set_title(const String &p_title);
+	String get_title() const;
+
 	void set_mode_overrides_title(bool p_override);
 	bool is_mode_overriding_title();
 
@@ -75,9 +78,6 @@ public:
 	PackedStringArray get_filters() const;
 	void add_filter(const String &p_filter, const String &p_description);
 	void clear_filters();
-
-	void set_title(const String &p_title);
-	String get_title() const;
 };
 
 }
