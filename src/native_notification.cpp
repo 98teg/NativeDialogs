@@ -1,3 +1,5 @@
+#include <godot_cpp/classes/translation_server.hpp>
+
 #include "native_notification.h"
 
 using namespace godot;
@@ -7,14 +9,29 @@ void NativeNotification::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_title"), &NativeNotification::get_title);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
 
+	ADD_GROUP("Notification", "notification");
     ClassDB::bind_method("set_text", &NativeNotification::set_text);
     ClassDB::bind_method("get_text", &NativeNotification::get_text);
-	ADD_PROPERTY(PropertyInfo(Variant::STRING, "text"), "set_text", "get_text");
+	ADD_PROPERTY(
+		PropertyInfo(
+			Variant::STRING,
+			"notification_text",
+			PROPERTY_HINT_MULTILINE_TEXT,
+			""
+		),
+		"set_text",
+		"get_text"
+	);
 
     ClassDB::bind_method("set_icon", &NativeNotification::set_icon);
     ClassDB::bind_method("get_icon", &NativeNotification::get_icon);
 	ADD_PROPERTY(
-		PropertyInfo(Variant::INT, "icon", PROPERTY_HINT_ENUM, "INFO,WARNING,ERROR"),
+		PropertyInfo(
+			Variant::INT,
+			"notification_icon",
+			PROPERTY_HINT_ENUM,
+			"INFO,WARNING,ERROR"
+		),
 		"set_icon",
 		"get_icon"
 	);
@@ -27,9 +44,9 @@ void NativeNotification::_bind_methods() {
 }
 
 NativeNotification::NativeNotification() {
-	title = "";
+	title = TranslationServer::get_singleton()->translate("Alert!");
 	text = "";
-	icon = ICON_INFO;
+	icon = ICON_WARNING;
 }
 
 void NativeNotification::send() {
