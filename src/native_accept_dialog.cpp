@@ -61,13 +61,7 @@ NativeAcceptDialog::~NativeAcceptDialog() {
 void NativeAcceptDialog::_process(float delta) {
 	if(!message || !message->ready(0)) return;
 
-	switch(message->result()){
-		case pfd::button::cancel:
-			emit_signal("cancelled");
-			break;
-		default:
-			emit_signal("confirmed");
-	}
+	process_button(message->result());
 
 	hide();
 }
@@ -101,7 +95,7 @@ void NativeAcceptDialog::show() {
 	message = new pfd::message(
 		title.utf8().get_data(),
 		text.utf8().get_data(),
-		pfd::choice::ok,
+		choice,
 		pfd_icon
 	);
 }
@@ -140,4 +134,20 @@ void NativeAcceptDialog::set_icon(Icon p_icon) {
 
 NativeAcceptDialog::Icon NativeAcceptDialog::get_icon() {
 	return icon;
+}
+
+void NativeAcceptDialog::process_button(pfd::button button) {
+	if (button == pfd::button::ok) {
+		emit_signal("confirmed");
+	} else {
+		emit_signal("cancelled");
+	}
+}
+
+void NativeAcceptDialog::set_choice(pfd::choice p_choice) {
+	choice = p_choice;
+}
+
+pfd::choice NativeAcceptDialog::get_choice() {
+	return choice;
 }

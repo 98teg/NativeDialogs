@@ -8,6 +8,7 @@
 
 #include "native_message.h"
 #include "native_accept_dialog.h"
+#include "native_confirmation_dialog.h"
 #include "native_notification.h"
 #include "native_file_dialog.h"
 
@@ -20,6 +21,7 @@ void register_types(ModuleInitializationLevel p_level) {
 
 	ClassDB::register_class<NativeMessage>();
 	ClassDB::register_class<NativeAcceptDialog>();
+	ClassDB::register_class<NativeConfirmationDialog>();
 	ClassDB::register_class<NativeNotification>();
 	ClassDB::register_class<NativeFileDialog>();
 }

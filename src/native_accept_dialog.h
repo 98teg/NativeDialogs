@@ -15,6 +15,11 @@ class NativeAcceptDialog : public Node {
 protected:
 	static void _bind_methods();
 
+	void process_button(pfd::button button);
+
+	void set_choice(pfd::choice p_choice);
+	pfd::choice get_choice();
+
 public:
 	enum Icon {
 		ICON_INFO,
@@ -28,6 +33,7 @@ private:
 	String text;
 	Icon icon;
 
+	pfd::choice choice = pfd::choice::ok;
 	pfd::message* message = nullptr;
 
 public:
