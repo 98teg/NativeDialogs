@@ -1,6 +1,7 @@
 #include <godot_cpp/classes/project_settings.hpp>
 #include <godot_cpp/classes/os.hpp>
 #include <godot_cpp/classes/translation_server.hpp>
+#include <godot_cpp/classes/dir_access.hpp>
 
 #include "native_file_dialog.h"
 
@@ -256,6 +257,8 @@ NativeFileDialog::Access NativeFileDialog::get_access() const {
 
 
 void NativeFileDialog::set_root_subfolder(const String &p_root) {
+	ERR_FAIL_COND_MSG(!DirAccess::dir_exists_absolute(get_root_string() + p_root), "root_subfolder must be an existing sub-directory.");
+
 	root_subfolder = p_root;
 }
 
