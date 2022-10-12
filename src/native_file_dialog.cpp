@@ -252,6 +252,11 @@ std::string NativeFileDialog::get_pfd_path() const {
 	String path = get_root_string() + get_root_subfolder();
 	String global_path = ProjectSettings::get_singleton()->globalize_path(path);
 
+	// Fixes issue with Open Folder mode, as it requires the string to end with slash
+	if (!global_path.ends_with("/")) {
+		global_path = global_path + "/";
+	}
+
 #if _WIN32
 	global_path = global_path.replace("/", "\\");
 #endif
