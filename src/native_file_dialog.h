@@ -1,9 +1,9 @@
 #ifndef NATIVEFILEDIALOG_H
 #define NATIVEFILEDIALOG_H
 
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/core/binder_common.hpp>
 #include <godot_cpp/core/class_db.hpp>
-#include <godot_cpp/classes/node.hpp>
 
 #include <portable-file-dialogs.h>
 
@@ -16,39 +16,40 @@ protected:
 	static void _bind_methods();
 
 public:
-    enum FileMode {
+	enum FileMode {
 		FILE_MODE_OPEN_FILE,
 		FILE_MODE_OPEN_FILES,
 		FILE_MODE_OPEN_DIR,
 		FILE_MODE_SAVE_FILE
-    };
+	};
 
-    enum Access {
+	enum Access {
 		ACCESS_RESOURCES,
 		ACCESS_USERDATA,
 		ACCESS_FILESYSTEM
-    };
+	};
 
 private:
 	String title;
 	bool mode_overrides_title;
 	FileMode mode;
-    Access access;
+	Access access;
 	String root_subfolder;
-    PackedStringArray filters;
+	PackedStringArray filters;
 
-	pfd::open_file* open_file = nullptr;
-	pfd::save_file* save_file = nullptr;
-	pfd::select_folder* select_folder = nullptr;
+	pfd::open_file *open_file = nullptr;
+	pfd::save_file *save_file = nullptr;
+	pfd::select_folder *select_folder = nullptr;
 
-    std::vector<std::string> get_pfd_filters() const;
+	std::vector<std::string> get_pfd_filters() const;
 
-    std::string get_pfd_path() const;
-    String get_godot_path(const std::string &pfd_path) const;
+	std::string get_pfd_path() const;
+	String get_godot_path(const std::string &pfd_path) const;
 
 	void override_title();
-	
+
 	String get_root_string() const;
+
 public:
 	NativeFileDialog();
 	~NativeFileDialog();
@@ -80,7 +81,7 @@ public:
 	void clear_filters();
 };
 
-}
+} // namespace godot
 
 VARIANT_ENUM_CAST(NativeFileDialog, FileMode);
 VARIANT_ENUM_CAST(NativeFileDialog, Access);

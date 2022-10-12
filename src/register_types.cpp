@@ -8,8 +8,8 @@
 
 #include "native_accept_dialog.h"
 #include "native_confirmation_dialog.h"
-#include "native_notification.h"
 #include "native_file_dialog.h"
+#include "native_notification.h"
 
 using namespace godot;
 

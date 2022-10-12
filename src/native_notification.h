@@ -1,9 +1,9 @@
 #ifndef NATIVENOTIFICATION_H
 #define NATIVENOTIFICATION_H
 
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/core/binder_common.hpp>
 #include <godot_cpp/core/class_db.hpp>
-#include <godot_cpp/classes/node.hpp>
 
 #include <portable-file-dialogs.h>
 
@@ -17,9 +17,9 @@ protected:
 
 public:
 	enum Icon {
-		ICON_INFO = 0,
-		ICON_WARNING = 1,
-		ICON_ERROR= 2
+		ICON_INFO,
+		ICON_WARNING,
+		ICON_ERROR
 	};
 
 private:
@@ -42,7 +42,7 @@ public:
 	Icon get_icon();
 };
 
-}
+} // namespace godot
 
 VARIANT_ENUM_CAST(NativeNotification, Icon);
 

@@ -37,7 +37,7 @@ public:
 	ButtonsTexts get_buttons_texts();
 };
 
-}
+} // namespace godot
 
 VARIANT_ENUM_CAST(NativeConfirmationDialog, ButtonsTexts);
 

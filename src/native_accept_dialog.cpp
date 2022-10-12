@@ -5,47 +5,29 @@
 using namespace godot;
 
 void NativeAcceptDialog::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("set_title"), &NativeAcceptDialog::set_title);
-    ClassDB::bind_method(D_METHOD("get_title"), &NativeAcceptDialog::get_title);
+	ClassDB::bind_method(D_METHOD("set_title", "title"), &NativeAcceptDialog::set_title);
+	ClassDB::bind_method("get_title", &NativeAcceptDialog::get_title);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
 
 	ADD_GROUP("Dialog", "dialog");
-    ClassDB::bind_method("set_text", &NativeAcceptDialog::set_text);
-    ClassDB::bind_method("get_text", &NativeAcceptDialog::get_text);
-	ADD_PROPERTY(
-		PropertyInfo(
-			Variant::STRING,
-			"dialog_text",
-			PROPERTY_HINT_MULTILINE_TEXT,
-			""
-		),
-		"set_text",
-		"get_text"
-	);
+	ClassDB::bind_method(D_METHOD("set_text", "text"), &NativeAcceptDialog::set_text);
+	ClassDB::bind_method("get_text", &NativeAcceptDialog::get_text);
+	ADD_PROPERTY(PropertyInfo(Variant::STRING, "dialog_text", PROPERTY_HINT_MULTILINE_TEXT, ""), "set_text", "get_text");
 
-    ClassDB::bind_method("set_icon", &NativeAcceptDialog::set_icon);
-    ClassDB::bind_method("get_icon", &NativeAcceptDialog::get_icon);
-	ADD_PROPERTY(
-		PropertyInfo(
-			Variant::INT,
-			"dialog_icon",
-			PROPERTY_HINT_ENUM,
-			"Info,Warning,Error,Question"
-		),
-		"set_icon",
-		"get_icon"
-	);
+	ClassDB::bind_method(D_METHOD("set_icon", "icon"), &NativeAcceptDialog::set_icon);
+	ClassDB::bind_method("get_icon", &NativeAcceptDialog::get_icon);
+	ADD_PROPERTY(PropertyInfo(Variant::INT, "dialog_icon", PROPERTY_HINT_ENUM, "Info,Warning,Error,Question"), "set_icon", "get_icon");
 
-    ClassDB::bind_method("show", &NativeAcceptDialog::show);
-    ClassDB::bind_method("hide", &NativeAcceptDialog::hide);
+	ClassDB::bind_method("show", &NativeAcceptDialog::show);
+	ClassDB::bind_method("hide", &NativeAcceptDialog::hide);
 
 	ADD_SIGNAL(MethodInfo("confirmed"));
 	ADD_SIGNAL(MethodInfo("cancelled"));
 
 	BIND_ENUM_CONSTANT(ICON_INFO);
-    BIND_ENUM_CONSTANT(ICON_WARNING);
-    BIND_ENUM_CONSTANT(ICON_ERROR);
-    BIND_ENUM_CONSTANT(ICON_QUESTION);
+	BIND_ENUM_CONSTANT(ICON_WARNING);
+	BIND_ENUM_CONSTANT(ICON_ERROR);
+	BIND_ENUM_CONSTANT(ICON_QUESTION);
 }
 
 NativeAcceptDialog::NativeAcceptDialog() {
@@ -59,7 +41,9 @@ NativeAcceptDialog::~NativeAcceptDialog() {
 }
 
 void NativeAcceptDialog::_process(float delta) {
-	if(!message || !message->ready(0)) return;
+	if (!message || !message->ready(0)) {
+		return;
+	}
 
 	process_button(message->result());
 
@@ -78,7 +62,7 @@ void NativeAcceptDialog::show() {
 
 	pfd::icon pfd_icon;
 
-	switch(icon) {
+	switch (icon) {
 		case ICON_INFO:
 			pfd_icon = pfd::icon::info;
 			break;
@@ -93,15 +77,16 @@ void NativeAcceptDialog::show() {
 	}
 
 	message = new pfd::message(
-		title.utf8().get_data(),
-		text.utf8().get_data(),
-		choice,
-		pfd_icon
-	);
+			title.utf8().get_data(),
+			text.utf8().get_data(),
+			choice,
+			pfd_icon);
 }
 
 void NativeAcceptDialog::hide() {
-	if(!message) return;
+	if (!message) {
+		return;
+	}
 
 	message->kill();
 
@@ -127,7 +112,7 @@ String NativeAcceptDialog::get_text() {
 }
 
 void NativeAcceptDialog::set_icon(Icon p_icon) {
-	ERR_FAIL_INDEX(p_icon, 4);
+	ERR_FAIL_INDEX((int)p_icon, 4);
 
 	icon = p_icon;
 }
