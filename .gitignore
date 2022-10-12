@@ -11,7 +11,7 @@ zconf.h.included
 *.TMP
 logs
 Thumbs.db
-demo/bin
+**/bin/
 export_presets.cfg
 .vscode
 .godot

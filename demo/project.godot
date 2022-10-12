@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="demo"
-run/main_scene="res://Main.tscn"
+config/name="Native Dialogs"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 

@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyowfuspidj6l"]
+
+[ext_resource type="Script" path="res://scenes/native_accept_dialog.gd" id="1_wtpim"]
+
+[node name="NativeAcceptDialog" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wtpim")
+
+[node name="NativeAcceptDialog" type="NativeAcceptDialog" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+offset_right = 1050.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+offset_top = 229.0
+offset_right = 1050.0
+offset_bottom = 260.0
+
+[node name="Title" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+offset_right = 890.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="Lable" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Title"]
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 28.0
+text = "Title:"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer/Title"]
+offset_left = 42.0
+offset_right = 890.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+text = "Alert!"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Icon" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+offset_left = 894.0
+offset_right = 1050.0
+offset_bottom = 31.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 28.0
+text = "Icon:"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+offset_left = 42.0
+offset_right = 156.0
+offset_bottom = 31.0
+item_count = 4
+selected = 1
+popup/item_0/text = "Info"
+popup/item_0/id = 0
+popup/item_1/text = "Warning"
+popup/item_1/id = 1
+popup/item_2/text = "Error"
+popup/item_2/id = 2
+popup/item_3/text = "Question"
+popup/item_3/id = 3
+
+[node name="Text" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+offset_top = 264.0
+offset_right = 1050.0
+offset_bottom = 384.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Text"]
+offset_right = 1050.0
+offset_bottom = 26.0
+text = "Text:"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/Text"]
+custom_minimum_size = Vector2i(0, 90)
+offset_top = 30.0
+offset_right = 1050.0
+offset_bottom = 120.0
+
+[node name="Result" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+offset_top = 388.0
+offset_right = 1050.0
+offset_bottom = 419.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Result"]
+offset_top = 2.0
+offset_right = 53.0
+offset_bottom = 28.0
+text = "Result:"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/Result"]
+offset_left = 57.0
+offset_right = 1050.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+editable = false
+
+[node name="Show" type="Button" parent="HBoxContainer"]
+offset_left = 1054.0
+offset_top = 308.0
+offset_right = 1104.0
+offset_bottom = 339.0
+size_flags_vertical = 4
+text = "Show"
+
+[node name="Hide" type="Button" parent="HBoxContainer"]
+offset_left = 1108.0
+offset_top = 308.0
+offset_right = 1152.0
+offset_bottom = 339.0
+size_flags_vertical = 4
+text = "Hide"
+
+[connection signal="cancelled" from="NativeAcceptDialog" to="." method="set_cancelled"]
+[connection signal="confirmed" from="NativeAcceptDialog" to="." method="set_confirmed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeAcceptDialog" method="set_title"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/HBoxContainer/Icon/OptionButton" to="NativeAcceptDialog" method="set_icon"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/Text/TextEdit" to="." method="text_changed"]
+[connection signal="pressed" from="HBoxContainer/Show" to="NativeAcceptDialog" method="show"]
+[connection signal="pressed" from="HBoxContainer/Hide" to="NativeAcceptDialog" method="hide"]

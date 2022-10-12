@@ -1,0 +1,116 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3lywl2to6wuh"]
+
+[ext_resource type="Script" path="res://scenes/native_notification.gd" id="1_dl8uo"]
+
+[node name="NativeNotification" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dl8uo")
+
+[node name="NativeNotification" type="NativeNotification" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+offset_right = 1101.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 246.0
+offset_right = 1101.0
+offset_bottom = 277.0
+
+[node name="Title" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_right = 946.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="Lable" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Title"]
+layout_mode = 2
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 28.0
+text = "Title:"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer/Title"]
+layout_mode = 2
+offset_left = 42.0
+offset_right = 946.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+text = "Alert!"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Icon" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 950.0
+offset_right = 1101.0
+offset_bottom = 31.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+layout_mode = 2
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 28.0
+text = "Icon:"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+layout_mode = 2
+offset_left = 42.0
+offset_right = 151.0
+offset_bottom = 31.0
+item_count = 3
+selected = 1
+popup/item_0/text = "Info"
+popup/item_0/id = 0
+popup/item_1/text = "Warning"
+popup/item_1/id = 1
+popup/item_2/text = "Error"
+popup/item_2/id = 2
+
+[node name="Text" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 281.0
+offset_right = 1101.0
+offset_bottom = 401.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Text"]
+layout_mode = 2
+offset_right = 1101.0
+offset_bottom = 26.0
+text = "Text:"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/Text"]
+custom_minimum_size = Vector2i(0, 90)
+layout_mode = 2
+offset_top = 30.0
+offset_right = 1101.0
+offset_bottom = 120.0
+
+[node name="Send" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+offset_left = 1105.0
+offset_top = 308.0
+offset_right = 1152.0
+offset_bottom = 339.0
+size_flags_vertical = 4
+text = "Send"
+
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeNotification" method="set_title"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/HBoxContainer/Icon/OptionButton" to="NativeNotification" method="set_icon"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/Text/TextEdit" to="." method="text_changed"]
+[connection signal="pressed" from="HBoxContainer/Send" to="NativeNotification" method="send"]
