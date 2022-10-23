@@ -2,12 +2,13 @@ extends PanelContainer
 
 
 @onready var native_file_dialog: NativeFileDialog = $NativeFileDialog
-@onready var title_line_edit: LineEdit = $HBoxContainer/VBoxContainer/FirstRow/Title/LineEdit
-@onready var overrides_check_button: CheckButton = $HBoxContainer/VBoxContainer/FirstRow/ModeOverridesTitle/CheckButton
-@onready var file_mode_option_button: OptionButton = $HBoxContainer/VBoxContainer/SecondRow/FileMode/OptionButton
-@onready var filter_line_edit: LineEdit = $HBoxContainer/VBoxContainer/Filters/HBoxContainer/Filter/LineEdit
-@onready var description_line_edit: LineEdit = $HBoxContainer/VBoxContainer/Filters/HBoxContainer/Description/LineEdit
-@onready var filters_list: VBoxContainer = $HBoxContainer/VBoxContainer/Filters/ScrollContainer/PanelContainer/VBoxContainer
+@onready var title_line_edit: LineEdit = $MarginContainer/VBoxContainer/FirstRow/Title/LineEdit
+@onready var overrides_check_button: CheckButton = $MarginContainer/VBoxContainer/FirstRow/ModeOverridesTitle/CheckButton
+@onready var file_mode_option_button: OptionButton = $MarginContainer/VBoxContainer/SecondRow/FileMode/OptionButton
+@onready var filter_line_edit: LineEdit = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/HBoxContainer/Filter/LineEdit
+@onready var description_line_edit: LineEdit = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/HBoxContainer/Description/LineEdit
+@onready var filters_list: VBoxContainer = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/PanelContainer/ScrollContainer/VBoxContainer
+@onready var result_line_edit: LineEdit = $MarginContainer/VBoxContainer/Result/LineEdit
 
 
 func select_file_mode(file_mode):
@@ -50,3 +51,9 @@ func update_filters():
 		label.text = filter
 
 		filters_list.add_child(label)
+
+
+func files_selected(paths: Array[String]):
+	result_line_edit.text = paths.reduce(
+		func(paths, path): return path if paths == "" else paths + ", " + path, ""
+	)

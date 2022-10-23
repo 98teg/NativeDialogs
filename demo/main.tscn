@@ -1,58 +1,109 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsceba4s677re"]
+[gd_scene load_steps=8 format=3 uid="uid://dsceba4s677re"]
 
 [ext_resource type="PackedScene" uid="uid://cyowfuspidj6l" path="res://scenes/native_accept_dialog.tscn" id="1_r21be"]
+[ext_resource type="Theme" uid="uid://dghnjlpplxvrd" path="res://main_theme.tres" id="1_xfap8"]
 [ext_resource type="PackedScene" uid="uid://bahfxvu3r7io" path="res://scenes/native_confirmation_dialog.tscn" id="2_35kej"]
 [ext_resource type="PackedScene" uid="uid://b3lywl2to6wuh" path="res://scenes/native_notification.tscn" id="3_hnvye"]
 [ext_resource type="PackedScene" uid="uid://bfhf2x2p1f5fv" path="res://scenes/native_file_dialog.tscn" id="3_mcjmb"]
 
-[node name="Main" type="ScrollContainer"]
+[sub_resource type="Gradient" id="Gradient_su64u"]
+colors = PackedColorArray(0.376471, 0.631373, 0.882353, 1, 0.67451, 0.980392, 0.988235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jcan"]
+gradient = SubResource("Gradient_su64u")
+fill_to = Vector2(0, 1)
+
+[node name="Main" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_7jcan")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xfap8")
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+offset_top = 15.0
+offset_right = 1137.0
+offset_bottom = 633.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 1144.0
-offset_bottom = 737.0
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+offset_right = 1127.0
+offset_bottom = 2225.0
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 15
 
-[node name="NativeAcceptDialog" parent="VBoxContainer" instance=ExtResource("1_r21be")]
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+offset_left = 60.0
+offset_top = 15.0
+offset_right = 1082.0
+offset_bottom = 2210.0
+theme_override_constants/h_separation = 45
+theme_override_constants/v_separation = 30
+
+[node name="NativeAcceptDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_r21be")]
+custom_minimum_size = Vector2i(720, 0)
+layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 1144.0
-offset_bottom = 190.0
+offset_right = 720.0
+offset_bottom = 496.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="NativeConfirmationDialog" parent="VBoxContainer" instance=ExtResource("2_35kej")]
+[node name="NativeConfirmationDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("2_35kej")]
+custom_minimum_size = Vector2i(720, 0)
+layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 194.0
-offset_right = 1144.0
-offset_bottom = 384.0
+offset_top = 526.0
+offset_right = 720.0
+offset_bottom = 1022.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="NativeFileDialog" parent="VBoxContainer" instance=ExtResource("3_mcjmb")]
+[node name="NativeFileDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_mcjmb")]
+custom_minimum_size = Vector2i(720, 0)
+layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 388.0
-offset_right = 1144.0
-offset_bottom = 578.0
+offset_top = 1052.0
+offset_right = 720.0
+offset_bottom = 1742.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="NativeNotification" parent="VBoxContainer" instance=ExtResource("3_hnvye")]
+[node name="NativeNotification" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_hnvye")]
+custom_minimum_size = Vector2i(720, 0)
+layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 582.0
-offset_right = 1144.0
-offset_bottom = 737.0
+offset_top = 1772.0
+offset_right = 720.0
+offset_bottom = 2195.0
 grow_horizontal = 1
 grow_vertical = 1

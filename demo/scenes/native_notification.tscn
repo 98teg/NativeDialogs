@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3lywl2to6wuh"]
+[gd_scene load_steps=3 format=3 uid="uid://b3lywl2to6wuh"]
 
 [ext_resource type="Script" path="res://scenes/native_notification.gd" id="1_dl8uo"]
+[ext_resource type="Theme" uid="uid://dghnjlpplxvrd" path="res://main_theme.tres" id="1_kx2dd"]
 
 [node name="NativeNotification" type="PanelContainer"]
 anchors_preset = 15
@@ -8,71 +9,82 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_kx2dd")
 script = ExtResource("1_dl8uo")
 
 [node name="NativeNotification" type="NativeNotification" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+offset_left = 90.0
+offset_top = 60.0
+offset_right = 1062.0
+offset_bottom = 588.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-offset_right = 1101.0
-offset_bottom = 648.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+offset_right = 972.0
+offset_bottom = 31.0
+theme_type_variation = &"HeaderSmall"
+text = "NativeNotification"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 46.0
+offset_right = 972.0
+offset_bottom = 235.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-offset_top = 246.0
-offset_right = 1101.0
-offset_bottom = 277.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+offset_right = 972.0
+offset_bottom = 58.0
 
-[node name="Title" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-offset_right = 946.0
-offset_bottom = 31.0
+[node name="Title" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+offset_right = 706.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 0
 
-[node name="Lable" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Title"]
-layout_mode = 2
-offset_top = 2.0
-offset_right = 38.0
-offset_bottom = 28.0
-text = "Title:"
+[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Title"]
+offset_right = 706.0
+offset_bottom = 26.0
+text = "Title"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer/Title"]
-layout_mode = 2
-offset_left = 42.0
-offset_right = 946.0
-offset_bottom = 31.0
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Title"]
+offset_top = 26.0
+offset_right = 706.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
 text = "Alert!"
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Icon" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-offset_left = 950.0
-offset_right = 1101.0
-offset_bottom = 31.0
+[node name="Icon" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+offset_left = 736.0
+offset_right = 972.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Icon"]
-layout_mode = 2
-offset_top = 2.0
-offset_right = 38.0
-offset_bottom = 28.0
-text = "Icon:"
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+offset_right = 236.0
+offset_bottom = 26.0
+text = "Icon"
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/Icon"]
-layout_mode = 2
-offset_left = 42.0
-offset_right = 151.0
-offset_bottom = 31.0
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+offset_top = 26.0
+offset_right = 236.0
+offset_bottom = 58.0
 item_count = 3
 selected = 1
 popup/item_0/text = "Info"
@@ -82,35 +94,39 @@ popup/item_1/id = 1
 popup/item_2/text = "Error"
 popup/item_2/id = 2
 
-[node name="Text" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-offset_top = 281.0
-offset_right = 1101.0
-offset_bottom = 401.0
+[node name="Text" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+offset_top = 73.0
+offset_right = 972.0
+offset_bottom = 189.0
+theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Text"]
-layout_mode = 2
-offset_right = 1101.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Text"]
+offset_right = 972.0
 offset_bottom = 26.0
-text = "Text:"
+text = "Text"
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer/Text"]
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/Text"]
 custom_minimum_size = Vector2i(0, 90)
-layout_mode = 2
-offset_top = 30.0
-offset_right = 1101.0
-offset_bottom = 120.0
+offset_top = 26.0
+offset_right = 972.0
+offset_bottom = 116.0
 
-[node name="Send" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-offset_left = 1105.0
-offset_top = 308.0
-offset_right = 1152.0
-offset_bottom = 339.0
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 250.0
+offset_right = 972.0
+offset_bottom = 303.0
+theme_override_constants/margin_top = 15
+
+[node name="Send" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+offset_left = 884.0
+offset_top = 15.0
+offset_right = 972.0
+offset_bottom = 53.0
+size_flags_horizontal = 8
 size_flags_vertical = 4
 text = "Send"
 
-[connection signal="text_changed" from="HBoxContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeNotification" method="set_title"]
-[connection signal="item_selected" from="HBoxContainer/VBoxContainer/HBoxContainer/Icon/OptionButton" to="NativeNotification" method="set_icon"]
-[connection signal="text_changed" from="HBoxContainer/VBoxContainer/Text/TextEdit" to="." method="text_changed"]
-[connection signal="pressed" from="HBoxContainer/Send" to="NativeNotification" method="send"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeNotification" method="set_title"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Icon/OptionButton" to="NativeNotification" method="set_icon"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/Text/TextEdit" to="." method="text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/Send" to="NativeNotification" method="send"]

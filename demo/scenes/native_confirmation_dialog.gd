@@ -2,8 +2,8 @@ extends PanelContainer
 
 
 @onready var native_confirmation_dialog: NativeConfirmationDialog = $NativeConfirmationDialog
-@onready var text_edit: TextEdit = $HBoxContainer/VBoxContainer/Text/TextEdit
-@onready var result: LineEdit = $HBoxContainer/VBoxContainer/Result/LineEdit
+@onready var text_edit: TextEdit = $MarginContainer/VBoxContainer/Text/TextEdit
+@onready var result: LineEdit = $MarginContainer/VBoxContainer/Result/LineEdit
 
 
 func text_changed():
