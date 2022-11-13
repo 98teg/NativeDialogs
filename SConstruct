@@ -13,10 +13,15 @@ env = SConscript("godot-cpp/SConstruct")
 # - LINKFLAGS are for linking flags
 
 # portable-file-dialogs
-env.Append(CPPPATH=['portable-file-dialogs'])
+env.Append(CPPPATH=["portable-file-dialogs"])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=["src/"])
+
+# windows' libs
+if env["platform"] == "windows":
+    env.Append(LIBS=["User32", "Shell32"])
+
 sources = Glob("src/*.cpp")
 
 if env["platform"] == "macos":
@@ -28,9 +33,7 @@ if env["platform"] == "macos":
     )
 else:
     library = env.SharedLibrary(
-        "demo/addons/native_dialogs/bin/libnativedialogs.{}.{}.{}{}".format(
-            env["platform"], env["target"], env["arch_suffix"], env["SHLIBSUFFIX"]
-        ),
+        "demo/addons/native_dialogs/bin/libnativedialogs{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 

@@ -6,7 +6,7 @@ using namespace godot;
 
 void NativeConfirmationDialog::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_buttons_texts", "buttons_texts"), &NativeConfirmationDialog::set_buttons_texts);
-	ClassDB::bind_method("get_buttons_texts", &NativeConfirmationDialog::get_buttons_texts);
+	ClassDB::bind_method(D_METHOD("get_buttons_texts"), &NativeConfirmationDialog::get_buttons_texts);
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "buttons_texts", PROPERTY_HINT_ENUM, "OK Cancel,Yes No"), "set_buttons_texts", "get_buttons_texts");
 
 	BIND_ENUM_CONSTANT(BUTTONS_TEXTS_OK_CANCEL);

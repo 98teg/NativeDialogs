@@ -6,20 +6,20 @@ using namespace godot;
 
 void NativeAcceptDialog::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_title", "title"), &NativeAcceptDialog::set_title);
-	ClassDB::bind_method("get_title", &NativeAcceptDialog::get_title);
+	ClassDB::bind_method(D_METHOD("get_title"), &NativeAcceptDialog::get_title);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
 
 	ADD_GROUP("Dialog", "dialog");
 	ClassDB::bind_method(D_METHOD("set_text", "text"), &NativeAcceptDialog::set_text);
-	ClassDB::bind_method("get_text", &NativeAcceptDialog::get_text);
+	ClassDB::bind_method(D_METHOD("get_text"), &NativeAcceptDialog::get_text);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "dialog_text", PROPERTY_HINT_MULTILINE_TEXT, ""), "set_text", "get_text");
 
 	ClassDB::bind_method(D_METHOD("set_icon", "icon"), &NativeAcceptDialog::set_icon);
-	ClassDB::bind_method("get_icon", &NativeAcceptDialog::get_icon);
+	ClassDB::bind_method(D_METHOD("get_icon"), &NativeAcceptDialog::get_icon);
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "dialog_icon", PROPERTY_HINT_ENUM, "Info,Warning,Error,Question"), "set_icon", "get_icon");
 
-	ClassDB::bind_method("show", &NativeAcceptDialog::show);
-	ClassDB::bind_method("hide", &NativeAcceptDialog::hide);
+	ClassDB::bind_method(D_METHOD("show"), &NativeAcceptDialog::show);
+	ClassDB::bind_method(D_METHOD("hide"), &NativeAcceptDialog::hide);
 
 	ADD_SIGNAL(MethodInfo("confirmed"));
 	ADD_SIGNAL(MethodInfo("cancelled"));

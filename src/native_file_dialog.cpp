@@ -9,33 +9,33 @@ using namespace godot;
 
 void NativeFileDialog::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_title", "title"), &NativeFileDialog::set_title);
-	ClassDB::bind_method("get_title", &NativeFileDialog::get_title);
+	ClassDB::bind_method(D_METHOD("get_title"), &NativeFileDialog::get_title);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "title"), "set_title", "get_title");
 
 	ClassDB::bind_method(D_METHOD("set_mode_overrides_title", "override"), &NativeFileDialog::set_mode_overrides_title);
-	ClassDB::bind_method("is_mode_overriding_title", &NativeFileDialog::is_mode_overriding_title);
+	ClassDB::bind_method(D_METHOD("is_mode_overriding_title"), &NativeFileDialog::is_mode_overriding_title);
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "mode_overrides_title"), "set_mode_overrides_title", "is_mode_overriding_title");
 
 	ClassDB::bind_method(D_METHOD("set_file_mode", "mode"), &NativeFileDialog::set_file_mode);
-	ClassDB::bind_method("get_file_mode", &NativeFileDialog::get_file_mode);
+	ClassDB::bind_method(D_METHOD("get_file_mode"), &NativeFileDialog::get_file_mode);
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "file_mode", PROPERTY_HINT_ENUM, "Open File,Open Files,Open Folder,Save"), "set_file_mode", "get_file_mode");
 
 	ClassDB::bind_method(D_METHOD("set_access", "access"), &NativeFileDialog::set_access);
-	ClassDB::bind_method("get_access", &NativeFileDialog::get_access);
+	ClassDB::bind_method(D_METHOD("get_access"), &NativeFileDialog::get_access);
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "access", PROPERTY_HINT_ENUM, "Resources,User Data,File System"), "set_access", "get_access");
 
 	ClassDB::bind_method(D_METHOD("set_root_subfolder", "dir"), &NativeFileDialog::set_root_subfolder);
-	ClassDB::bind_method("get_root_subfolder", &NativeFileDialog::get_root_subfolder);
+	ClassDB::bind_method(D_METHOD("get_root_subfolder"), &NativeFileDialog::get_root_subfolder);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "root_subfolder"), "set_root_subfolder", "get_root_subfolder");
 
 	ClassDB::bind_method(D_METHOD("set_filters", "filter"), &NativeFileDialog::set_filters);
-	ClassDB::bind_method("get_filters", &NativeFileDialog::get_filters);
+	ClassDB::bind_method(D_METHOD("get_filters"), &NativeFileDialog::get_filters);
 	ClassDB::bind_method(D_METHOD("add_filter", "filter", "description"), &NativeFileDialog::add_filter, DEFVAL(""));
-	ClassDB::bind_method("clear_filters", &NativeFileDialog::clear_filters);
+	ClassDB::bind_method(D_METHOD("clear_filters"), &NativeFileDialog::clear_filters);
 	ADD_PROPERTY(PropertyInfo(Variant::PACKED_STRING_ARRAY, "filters"), "set_filters", "get_filters");
 
-	ClassDB::bind_method("show", &NativeFileDialog::show);
-	ClassDB::bind_method("hide", &NativeFileDialog::hide);
+	ClassDB::bind_method(D_METHOD("show"), &NativeFileDialog::show);
+	ClassDB::bind_method(D_METHOD("hide"), &NativeFileDialog::hide);
 
 	ADD_SIGNAL(MethodInfo("file_selected", PropertyInfo(Variant::STRING, "path")));
 	ADD_SIGNAL(MethodInfo("files_selected", PropertyInfo(Variant::PACKED_STRING_ARRAY, "paths")));
