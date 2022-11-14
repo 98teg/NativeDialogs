@@ -1,0 +1,21 @@
+name: 💅 Linting
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths: 
+      - '.github/workflows/lint.yml'
+      - 'src/**'
+      - 'demo/**'
+      - '.clang-format'
+      - '.clang-tidy'
+
+
+jobs:
+  gdscript:
+    name: GDScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: pip3 install git+https://github.com/Scony/godot-gdscript-toolkit.git
+      - run: bash -c 'for f in ./demo/**/*.gd; do gdlint "$f"; done'

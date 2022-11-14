@@ -62,7 +62,7 @@ theme_override_constants/h_separation = 45
 theme_override_constants/v_separation = 30
 
 [node name="NativeAcceptDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_r21be")]
-custom_minimum_size = Vector2i(720, 0)
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
@@ -73,7 +73,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="NativeConfirmationDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("2_35kej")]
-custom_minimum_size = Vector2i(720, 0)
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
@@ -85,7 +85,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="NativeFileDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_mcjmb")]
-custom_minimum_size = Vector2i(720, 0)
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
@@ -97,7 +97,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="NativeNotification" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_hnvye")]
-custom_minimum_size = Vector2i(720, 0)
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0

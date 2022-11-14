@@ -1,6 +1,6 @@
 extends PanelContainer
 
-
+# gdlint: disable=max-line-length
 @onready var native_file_dialog: NativeFileDialog = $NativeFileDialog
 @onready var title_line_edit: LineEdit = $MarginContainer/VBoxContainer/FirstRow/Title/LineEdit
 @onready var overrides_check_button: CheckButton = $MarginContainer/VBoxContainer/FirstRow/ModeOverridesTitle/CheckButton
@@ -9,6 +9,7 @@ extends PanelContainer
 @onready var description_line_edit: LineEdit = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/HBoxContainer/Description/LineEdit
 @onready var filters_list: VBoxContainer = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/PanelContainer/ScrollContainer/VBoxContainer
 @onready var result_line_edit: LineEdit = $MarginContainer/VBoxContainer/Result/LineEdit
+# gdlint: enable=max-line-length
 
 
 func select_file_mode(file_mode):
@@ -20,7 +21,7 @@ func select_file_mode(file_mode):
 func override_title():
 	native_file_dialog.mode_overrides_title = overrides_check_button.button_pressed
 
-	if (native_file_dialog.mode_overrides_title):
+	if native_file_dialog.mode_overrides_title:
 		title_line_edit.editable = false
 		title_line_edit.text = native_file_dialog.title
 	else:

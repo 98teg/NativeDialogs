@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on:  ${{matrix.os}}
+    runs-on: ${{matrix.os}}
     name: ${{matrix.name}}
     strategy:
       fail-fast: false
