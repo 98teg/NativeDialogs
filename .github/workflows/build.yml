@@ -2,23 +2,21 @@ name: 🏗 Builds
 
 on:
   pull_request:
-    branches: [ master ]
-    paths: 
-      - '.github/workflows/build.yml'
-      - 'godot-cpp/**'
-      - 'portable-file-dialogs/**'
-      - 'src/**'
-      - '.gitmodules'
-      - 'SConstruct'
+    branches: [master]
+    paths:
+      - ".github/workflows/build.yml"
+      - "godot-cpp/**"
+      - "portable-file-dialogs/**"
+      - "src/**"
+      - ".gitmodules"
+      - "SConstruct"
 
-concurrency: 
+concurrency:
   group: ci-${{github.actor}}-${{github.head_ref || github.run_number}}-${{github.ref}}-macos
   cancel-in-progress: true
 
 jobs:
   build:
-    runs-on: ${{matrix.os}}
-    name: ${{matrix.name}}
     strategy:
       fail-fast: false
       matrix:
@@ -29,24 +27,28 @@ jobs:
             target: template_debug
             platform: windows
             arch: x86_64
+
           - identifier: windows-release
             os: windows-latest
             name: 🪟 Windows Release
             target: template_release
             platform: windows
             arch: x86_64
+
           - identifier: macos-debug
             os: macos-latest
             name: 🍎 macOS (universal) Debug
             target: template_debug
             platform: macos
             arch: universal
+
           - identifier: macos-release
             os: macos-latest
             name: 🍎 macOS (universal) Release
             target: template_release
             platform: macos
             arch: universal
+
           - identifier: linux-debug
             os: ubuntu-latest
             name: 🐧 Linux Debug
@@ -54,6 +56,7 @@ jobs:
             target: template_debug
             platform: linux
             arch: x86_64
+
           - identifier: linux-release
             os: ubuntu-latest
             name: 🐧 Linux Release
@@ -62,8 +65,9 @@ jobs:
             platform: linux
             arch: x86_64
 
+    runs-on: ${{matrix.os}}
+    name: ${{matrix.name}}
     steps:
-
       - name: Checkout project
         uses: actions/checkout@v3
         with:
@@ -72,7 +76,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Set up SCons
         shell: bash
