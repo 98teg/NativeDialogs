@@ -27,14 +27,6 @@ void NativeConfirmationDialog::_exit_tree() {
 	NativeAcceptDialog::_exit_tree();
 }
 
-void NativeConfirmationDialog::process_button(pfd::button button) {
-	if (button == pfd::button::ok || button == pfd::button::yes) {
-		emit_signal("confirmed");
-	} else {
-		emit_signal("cancelled");
-	}
-}
-
 void NativeConfirmationDialog::set_buttons_texts(ButtonsTexts p_buttons_texts) {
 	buttons_texts = p_buttons_texts;
 

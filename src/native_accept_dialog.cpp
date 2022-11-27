@@ -45,7 +45,12 @@ void NativeAcceptDialog::_process(float delta) {
 		return;
 	}
 
-	process_button(message->result());
+	pfd::button button = message->result();
+	if (button == pfd::button::ok || button == pfd::button::yes) {
+		emit_signal("confirmed");
+	} else {
+		emit_signal("cancelled");
+	}
 
 	hide();
 }
@@ -119,14 +124,6 @@ void NativeAcceptDialog::set_icon(Icon p_icon) {
 
 NativeAcceptDialog::Icon NativeAcceptDialog::get_icon() {
 	return icon;
-}
-
-void NativeAcceptDialog::process_button(pfd::button button) {
-	if (button == pfd::button::ok) {
-		emit_signal("confirmed");
-	} else {
-		emit_signal("cancelled");
-	}
 }
 
 void NativeAcceptDialog::set_choice(pfd::choice p_choice) {
