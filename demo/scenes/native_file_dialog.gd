@@ -1,38 +1,36 @@
 extends PanelContainer
 
-# gdlint: disable=max-line-length
-@onready var native_file_dialog: NativeFileDialog = $NativeFileDialog
-@onready var title_line_edit: LineEdit = $MarginContainer/VBoxContainer/FirstRow/Title/LineEdit
-@onready var overrides_check_button: CheckButton = $MarginContainer/VBoxContainer/FirstRow/ModeOverridesTitle/CheckButton
-@onready var file_mode_option_button: OptionButton = $MarginContainer/VBoxContainer/SecondRow/FileMode/OptionButton
-@onready var filter_line_edit: LineEdit = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/HBoxContainer/Filter/LineEdit
-@onready var description_line_edit: LineEdit = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/HBoxContainer/Description/LineEdit
-@onready var filters_list: VBoxContainer = $MarginContainer/VBoxContainer/Filters/PanelContainer/MarginContainer/Filters/PanelContainer/ScrollContainer/VBoxContainer
-@onready var result_line_edit: LineEdit = $MarginContainer/VBoxContainer/Result/LineEdit
-# gdlint: enable=max-line-length
+
+@onready var native_file_dialog: NativeFileDialog = %_NativeFileDialog
+@onready var title: LineEdit = %_Title
+@onready var overrides: CheckButton = %_Overrides
+@onready var filter: LineEdit = %_Filter
+@onready var description: LineEdit = %_Description
+@onready var filters: VBoxContainer = %_Filters
+@onready var result: LineEdit = %_Result
 
 
 func select_file_mode(file_mode):
-	native_file_dialog.file_mode = file_mode_option_button.get_selected_id()
+	native_file_dialog.file_mode = file_mode
 
 	override_title()
 
 
 func override_title():
-	native_file_dialog.mode_overrides_title = overrides_check_button.button_pressed
+	native_file_dialog.mode_overrides_title = overrides.button_pressed
 
 	if native_file_dialog.mode_overrides_title:
-		title_line_edit.editable = false
-		title_line_edit.text = native_file_dialog.title
+		title.editable = false
+		title.text = native_file_dialog.title
 	else:
-		title_line_edit.editable = true
+		title.editable = true
 
 
 func add_filter():
-	native_file_dialog.add_filter(filter_line_edit.text, description_line_edit.text)
+	native_file_dialog.add_filter(filter.text, description.text)
 
-	filter_line_edit.text = ""
-	description_line_edit.text = ""
+	filter.text = ""
+	description.text = ""
 
 	update_filters()
 
@@ -44,17 +42,21 @@ func clear_filters():
 
 
 func update_filters():
-	for child in filters_list.get_children():
+	for child in filters.get_children():
 		child.queue_free()
 
 	for filter in native_file_dialog.filters:
 		var label = Label.new()
 		label.text = filter
 
-		filters_list.add_child(label)
+		filters.add_child(label)
+
+
+func file_selected(paths: String):
+	files_selected([paths])
 
 
 func files_selected(paths: Array[String]):
-	result_line_edit.text = paths.reduce(
+	result.text = paths.reduce(
 		func(paths, path): return path if paths == "" else paths + ", " + path, ""
 	)

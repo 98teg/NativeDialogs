@@ -13,7 +13,8 @@ size_flags_vertical = 3
 theme = ExtResource("1_skr1f")
 script = ExtResource("1_1ix4v")
 
-[node name="NativeConfirmationDialog" type="NativeConfirmationDialog" parent="."]
+[node name="_NativeConfirmationDialog" type="NativeConfirmationDialog" parent="."]
+unique_name_in_owner = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 1152.0
@@ -41,19 +42,19 @@ offset_top = 46.0
 offset_right = 972.0
 offset_bottom = 104.0
 
-[node name="Title" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2i(150, 0)
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 offset_right = 612.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Title"]
+[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
 offset_right = 612.0
 offset_bottom = 26.0
 text = "Title"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/Title"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
 offset_top = 26.0
 offset_right = 612.0
 offset_bottom = 58.0
@@ -62,19 +63,19 @@ text = "Please Confirm..."
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Icon" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2i(150, 0)
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 offset_left = 642.0
 offset_right = 792.0
 offset_bottom = 58.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 offset_right = 150.0
 offset_bottom = 26.0
 text = "Icon"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Icon"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 offset_top = 26.0
 offset_right = 150.0
 offset_bottom = 58.0
@@ -89,19 +90,19 @@ popup/item_2/id = 2
 popup/item_3/text = "Question"
 popup/item_3/id = 3
 
-[node name="ButtonsTexts" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2i(150, 0)
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 offset_left = 822.0
 offset_right = 972.0
 offset_bottom = 58.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ButtonsTexts"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 offset_right = 150.0
 offset_bottom = 26.0
 text = "Buttons Texts"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/ButtonsTexts"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 offset_top = 26.0
 offset_right = 150.0
 offset_bottom = 58.0
@@ -112,35 +113,37 @@ popup/item_0/id = 0
 popup/item_1/text = "Yes No"
 popup/item_1/id = 1
 
-[node name="Text" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 offset_top = 119.0
 offset_right = 972.0
 offset_bottom = 235.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Text"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
 offset_right = 972.0
 offset_bottom = 26.0
 text = "Text"
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/Text"]
-custom_minimum_size = Vector2i(0, 90)
+[node name="_Text" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
 offset_top = 26.0
 offset_right = 972.0
 offset_bottom = 116.0
 
-[node name="Result" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 offset_top = 250.0
 offset_right = 972.0
 offset_bottom = 308.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Result"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 offset_right = 972.0
 offset_bottom = 26.0
 text = "Result"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Result"]
+[node name="_Result" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 offset_top = 26.0
 offset_right = 972.0
 offset_bottom = 58.0
@@ -162,7 +165,7 @@ grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 2
 
-[node name="Hide" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 offset_left = 779.0
 offset_right = 864.0
 offset_bottom = 38.0
@@ -170,18 +173,18 @@ size_flags_vertical = 4
 theme_type_variation = &"GhostButton"
 text = "Hide"
 
-[node name="Show" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 offset_left = 879.0
 offset_right = 972.0
 offset_bottom = 38.0
 size_flags_vertical = 4
 text = "Show"
 
-[connection signal="cancelled" from="NativeConfirmationDialog" to="." method="set_cancelled"]
-[connection signal="confirmed" from="NativeConfirmationDialog" to="." method="set_confirmed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeConfirmationDialog" method="set_title"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/Icon/OptionButton" to="NativeConfirmationDialog" method="set_icon"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/ButtonsTexts/OptionButton" to="NativeConfirmationDialog" method="set_buttons_texts"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/Text/TextEdit" to="." method="text_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Hide" to="NativeConfirmationDialog" method="hide"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Show" to="NativeConfirmationDialog" method="show"]
+[connection signal="cancelled" from="_NativeConfirmationDialog" to="." method="set_cancelled"]
+[connection signal="confirmed" from="_NativeConfirmationDialog" to="." method="set_confirmed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1/LineEdit" to="_NativeConfirmationDialog" method="set_title"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="_NativeConfirmationDialog" method="set_icon"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/OptionButton" to="_NativeConfirmationDialog" method="set_buttons_texts"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer1/_Text" to="." method="text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Button1" to="_NativeConfirmationDialog" method="hide"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Button2" to="_NativeConfirmationDialog" method="show"]

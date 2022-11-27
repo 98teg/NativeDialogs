@@ -1,13 +1,13 @@
 extends PanelContainer
 
 
-@onready var native_accept_dialog: NativeAcceptDialog = $NativeAcceptDialog
-@onready var text_edit: TextEdit = $MarginContainer/VBoxContainer/Text/TextEdit
-@onready var result: LineEdit = $MarginContainer/VBoxContainer/Result/LineEdit
+@onready var native_accept_dialog: NativeAcceptDialog = %_NativeAcceptDialog
+@onready var text: TextEdit = %_Text
+@onready var result: LineEdit = %_Result
 
 
 func text_changed():
-	native_accept_dialog.set_text(text_edit.text)
+	native_accept_dialog.set_text(text.text)
 
 
 func set_confirmed():

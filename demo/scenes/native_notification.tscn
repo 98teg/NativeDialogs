@@ -13,9 +13,11 @@ size_flags_vertical = 3
 theme = ExtResource("1_kx2dd")
 script = ExtResource("1_dl8uo")
 
-[node name="NativeNotification" type="NativeNotification" parent="."]
+[node name="_NativeNotification" type="NativeNotification" parent="."]
+unique_name_in_owner = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_constants/margin_left = 90
@@ -24,6 +26,7 @@ theme_override_constants/margin_right = 90
 theme_override_constants/margin_bottom = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 offset_left = 90.0
 offset_top = 60.0
 offset_right = 1062.0
@@ -32,12 +35,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 offset_right = 972.0
 offset_bottom = 31.0
 theme_type_variation = &"HeaderSmall"
 text = "NativeNotification"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 offset_top = 46.0
 offset_right = 972.0
 offset_bottom = 235.0
@@ -45,22 +50,26 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 offset_right = 972.0
 offset_bottom = 58.0
 
-[node name="Title" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 offset_right = 706.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 0
 
-[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Title"]
+[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
 offset_right = 706.0
 offset_bottom = 26.0
 text = "Title"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Title"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
 offset_top = 26.0
 offset_right = 706.0
 offset_bottom = 58.0
@@ -69,19 +78,22 @@ text = "Alert!"
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Icon" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 offset_left = 736.0
 offset_right = 972.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
 offset_right = 236.0
 offset_bottom = 26.0
 text = "Icon"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Icon"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
 offset_top = 26.0
 offset_right = 236.0
 offset_bottom = 58.0
@@ -94,30 +106,36 @@ popup/item_1/id = 1
 popup/item_2/text = "Error"
 popup/item_2/id = 2
 
-[node name="Text" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 offset_top = 73.0
 offset_right = 972.0
 offset_bottom = 189.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Text"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 offset_right = 972.0
 offset_bottom = 26.0
 text = "Text"
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/Text"]
-custom_minimum_size = Vector2i(0, 90)
+[node name="_Text" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
 offset_top = 26.0
 offset_right = 972.0
 offset_bottom = 116.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 offset_top = 250.0
 offset_right = 972.0
 offset_bottom = 303.0
 theme_override_constants/margin_top = 15
 
-[node name="Send" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
 offset_left = 884.0
 offset_top = 15.0
 offset_right = 972.0
@@ -126,7 +144,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 text = "Send"
 
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Title/LineEdit" to="NativeNotification" method="set_title"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Icon/OptionButton" to="NativeNotification" method="set_icon"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/Text/TextEdit" to="." method="text_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/Send" to="NativeNotification" method="send"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1/LineEdit" to="_NativeNotification" method="set_title"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="_NativeNotification" method="set_icon"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/_Text" to="." method="text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/Button" to="_NativeNotification" method="send"]
