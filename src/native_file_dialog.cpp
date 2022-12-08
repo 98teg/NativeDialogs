@@ -218,7 +218,7 @@ PackedStringArray NativeFileDialog::get_filters() const {
 	return filters;
 }
 
-void NativeFileDialog::add_filter(const String &p_filter, const String &p_description) {
+void NativeFileDialog::add_filter(const String &p_filter, const String &p_description = "") {
 	ERR_FAIL_COND_MSG(p_filter.begins_with("."), "Filter must be \"filename.extension\", can't start with dot.");
 
 	if (p_description.is_empty()) {

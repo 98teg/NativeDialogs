@@ -49,7 +49,6 @@ script = ExtResource("1_4eq6a")
 unique_name_in_owner = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 690.0
 theme_override_constants/margin_left = 90
@@ -58,7 +57,6 @@ theme_override_constants/margin_right = 90
 theme_override_constants/margin_bottom = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
 offset_left = 90.0
 offset_top = 60.0
 offset_right = 1062.0
@@ -66,34 +64,29 @@ offset_bottom = 630.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_right = 972.0
 offset_bottom = 31.0
 theme_type_variation = &"HeaderSmall"
 text = "NativeFileDialog"
 
 [node name="HBoxContainer1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 46.0
 offset_right = 972.0
 offset_bottom = 104.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
-layout_mode = 2
 offset_right = 736.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer1/VBoxContainer"]
-layout_mode = 2
 offset_right = 736.0
 offset_bottom = 26.0
 text = "Title"
 
 [node name="_Title" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer1/VBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
 offset_top = 26.0
 offset_right = 736.0
 offset_bottom = 58.0
@@ -104,7 +97,6 @@ caret_blink = true
 caret_blink_interval = 0.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
-layout_mode = 2
 offset_left = 766.0
 offset_top = 16.0
 offset_right = 972.0
@@ -113,39 +105,33 @@ size_flags_vertical = 4
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer1/HBoxContainer"]
-layout_mode = 2
 offset_right = 162.0
 offset_bottom = 26.0
 text = "Mode Overrides Title"
 
 [node name="_Overrides" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer1/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
 offset_left = 162.0
 offset_right = 206.0
 offset_bottom = 26.0
 button_pressed = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 119.0
 offset_right = 972.0
 offset_bottom = 177.0
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
 offset_right = 129.0
 offset_bottom = 58.0
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer1"]
-layout_mode = 2
 offset_right = 129.0
 offset_bottom = 26.0
 text = "File Mode"
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer1"]
-layout_mode = 2
 offset_top = 26.0
 offset_right = 129.0
 offset_bottom = 58.0
@@ -161,20 +147,17 @@ popup/item_3/text = "Save"
 popup/item_3/id = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
 offset_left = 159.0
 offset_right = 280.0
 offset_bottom = 58.0
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
-layout_mode = 2
 offset_right = 121.0
 offset_bottom = 26.0
 text = "Access"
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
-layout_mode = 2
 offset_top = 26.0
 offset_right = 121.0
 offset_bottom = 58.0
@@ -188,7 +171,6 @@ popup/item_2/text = "File System"
 popup/item_2/id = 2
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
 offset_left = 310.0
 offset_right = 972.0
 offset_bottom = 58.0
@@ -196,13 +178,11 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
-layout_mode = 2
 offset_right = 662.0
 offset_bottom = 26.0
 text = "Root Subfolder"
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
-layout_mode = 2
 offset_top = 26.0
 offset_right = 662.0
 offset_bottom = 58.0
@@ -211,27 +191,23 @@ caret_blink = true
 caret_blink_interval = 0.5
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 192.0
 offset_right = 972.0
 offset_bottom = 429.0
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
-layout_mode = 2
 offset_right = 972.0
 offset_bottom = 26.0
 text = "Filters"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
-layout_mode = 2
 offset_top = 26.0
 offset_right = 972.0
 offset_bottom = 237.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5ge7")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer"]
-layout_mode = 2
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 962.0
@@ -242,40 +218,34 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer"]
-layout_mode = 2
 offset_left = 15.0
 offset_top = 15.0
 offset_right = 937.0
 offset_bottom = 187.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_right = 922.0
 offset_bottom = 58.0
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_right = 338.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
-layout_mode = 2
 offset_right = 338.0
 offset_bottom = 26.0
 text = "Filter"
 
 [node name="_Filter" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
 unique_name_in_owner = true
-layout_mode = 2
 offset_top = 26.0
 offset_right = 338.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 368.0
 offset_right = 707.0
 offset_bottom = 58.0
@@ -283,21 +253,18 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
 offset_right = 339.0
 offset_bottom = 26.0
 text = "Description"
 
 [node name="_Description" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
-layout_mode = 2
 offset_top = 26.0
 offset_right = 339.0
 offset_bottom = 58.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 737.0
 offset_right = 922.0
 offset_bottom = 58.0
@@ -307,7 +274,6 @@ theme_override_constants/separation = 15
 alignment = 2
 
 [node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_top = 10.0
 offset_right = 79.0
 offset_bottom = 48.0
@@ -315,7 +281,6 @@ size_flags_vertical = 4
 text = "Add"
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 94.0
 offset_top = 10.0
 offset_right = 185.0
@@ -325,7 +290,6 @@ theme_type_variation = &"GhostButton"
 text = "Clear"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 73.0
 offset_right = 922.0
 offset_bottom = 172.0
@@ -335,7 +299,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_cvo7c")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
 custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 912.0
@@ -344,25 +307,21 @@ horizontal_scroll_mode = 0
 
 [node name="_Filters" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer"]
 unique_name_in_owner = true
-layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 444.0
 offset_right = 972.0
 offset_bottom = 502.0
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
-layout_mode = 2
 offset_right = 972.0
 offset_bottom = 26.0
 text = "Result"
 
 [node name="_Result" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
-layout_mode = 2
 offset_top = 26.0
 offset_right = 972.0
 offset_bottom = 58.0
@@ -370,14 +329,12 @@ size_flags_horizontal = 3
 editable = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 offset_top = 517.0
 offset_right = 972.0
 offset_bottom = 570.0
 theme_override_constants/margin_top = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
 offset_top = 15.0
 offset_right = 972.0
 offset_bottom = 53.0
@@ -387,7 +344,6 @@ theme_override_constants/separation = 15
 alignment = 2
 
 [node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 779.0
 offset_right = 864.0
 offset_bottom = 38.0
@@ -396,7 +352,6 @@ theme_type_variation = &"GhostButton"
 text = "Hide"
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 879.0
 offset_right = 972.0
 offset_bottom = 38.0

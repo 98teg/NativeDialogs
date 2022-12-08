@@ -129,7 +129,6 @@ jobs:
           mkdir addons
           cp -R demo/addons/native_dialogs addons
           cp LICENSE.md addons/native_dialogs
-          cp README.md addons/native_dialogs
           mkdir addons/native_dialogs/bin
 
       - name: Download binaries
