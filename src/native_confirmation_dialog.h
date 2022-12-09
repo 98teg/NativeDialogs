@@ -16,8 +16,6 @@ class NativeConfirmationDialog : public NativeAcceptDialog {
 protected:
 	static void _bind_methods();
 
-	void process_button(pfd::button button);
-
 public:
 	enum ButtonsTexts {
 		BUTTONS_TEXTS_OK_CANCEL,

@@ -1,5 +1,3 @@
-#include <godot_cpp/classes/translation_server.hpp>
-
 #include "native_confirmation_dialog.h"
 
 using namespace godot;
@@ -14,7 +12,7 @@ void NativeConfirmationDialog::_bind_methods() {
 }
 
 NativeConfirmationDialog::NativeConfirmationDialog() {
-	set_title(TranslationServer::get_singleton()->translate("Please Confirm..."));
+	set_title("Please Confirm...");
 	set_icon(ICON_QUESTION);
 	set_buttons_texts(BUTTONS_TEXTS_OK_CANCEL);
 }

@@ -26,7 +26,7 @@ void NativeNotification::_bind_methods() {
 }
 
 NativeNotification::NativeNotification() {
-	title = TranslationServer::get_singleton()->translate("Alert!");
+	title = "Alert!";
 	text = "";
 	icon = ICON_WARNING;
 }
@@ -46,7 +46,10 @@ void NativeNotification::send() {
 			break;
 	}
 
-	pfd::notify(title.utf8().get_data(), text.utf8().get_data(), pfd_icon);
+	pfd::notify(
+			String(TranslationServer::get_singleton()->translate(title)).utf8().get_data(),
+			String(TranslationServer::get_singleton()->translate(text)).utf8().get_data(),
+			pfd_icon);
 }
 
 void NativeNotification::set_title(const String &p_title) {

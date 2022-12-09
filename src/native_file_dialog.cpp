@@ -57,7 +57,7 @@ NativeFileDialog::NativeFileDialog() {
 	access = ACCESS_RESOURCES;
 	root_subfolder = "";
 	filters = PackedStringArray();
-	title = TranslationServer::get_singleton()->translate("Save a File");
+	title = "Save a File";
 }
 
 NativeFileDialog::~NativeFileDialog() {
@@ -67,27 +67,25 @@ NativeFileDialog::~NativeFileDialog() {
 void NativeFileDialog::_process(float delta) {
 	if (open_file && open_file->ready(0)) {
 		PackedStringArray result = PackedStringArray();
-		for (int i = 0; i < open_file->result().size(); i++) {
+		for (int i = 0; i < open_file->result().size(); i++)
 			result.append(get_godot_path(open_file->result()[i]));
-		}
 
-		if (result.size() == 1) {
-			emit_signal("file_selected", result[0]);
-		} else {
+		if (!result.is_empty())
 			emit_signal("files_selected", result);
-		}
 
 		hide();
-	}
+	} else if (save_file && save_file->ready(0)) {
+		String result = get_godot_path(save_file->result());
 
-	if (save_file && save_file->ready(0)) {
-		emit_signal("file_selected", get_godot_path(save_file->result()));
+		if (!result.is_empty())
+			emit_signal("file_selected", result);
 
 		hide();
-	}
+	} else if (select_folder && select_folder->ready(0)) {
+		String result = get_godot_path(select_folder->result());
 
-	if (select_folder && select_folder->ready(0)) {
-		emit_signal("dir_selected", get_godot_path(select_folder->result()));
+		if (!result.is_empty())
+			emit_signal("dir_selected", get_godot_path(select_folder->result()));
 
 		hide();
 	}
@@ -103,7 +101,7 @@ void NativeFileDialog::show() {
 
 	hide();
 
-	const char *title = get_title().utf8().get_data();
+	const char *title = String(TranslationServer::get_singleton()->translate(get_title())).utf8().get_data();
 
 	if (mode == FILE_MODE_OPEN_FILE || mode == FILE_MODE_OPEN_FILES) {
 		pfd::opt option = mode == FILE_MODE_OPEN_FILES ? pfd::opt::multiselect : pfd::opt::none;
@@ -238,7 +236,7 @@ std::vector<std::string> NativeFileDialog::get_pfd_filters() const {
 	for (int i = 0; i < filters.size(); i++) {
 		PackedStringArray filter = filters[i].split(" ; ");
 
-		String name = filter.size() == 2 ? filter[1] : "";
+		String name = TranslationServer::get_singleton()->translate(filter.size() == 2 ? filter[1] : "");
 		String extensions = filter[0].replace(", ", " ");
 
 		pfd_filters.push_back(name.utf8().get_data());
@@ -265,7 +263,7 @@ std::string NativeFileDialog::get_pfd_path() const {
 }
 
 String NativeFileDialog::get_godot_path(const std::string &pfd_path) const {
-	String godot_path = pfd_path.c_str();
+	String godot_path = String::utf8(pfd_path.c_str());
 
 #if _WIN32
 	godot_path = godot_path.replace("\\", "/");
@@ -281,16 +279,16 @@ void NativeFileDialog::override_title() {
 
 	switch (mode) {
 		case FILE_MODE_OPEN_FILE:
-			set_title(TranslationServer::get_singleton()->translate("Open a File"));
+			set_title("Open a File");
 			break;
 		case FILE_MODE_OPEN_FILES:
-			set_title(TranslationServer::get_singleton()->translate("Open File(s)"));
+			set_title("Open File(s)");
 			break;
 		case FILE_MODE_OPEN_DIR:
-			set_title(TranslationServer::get_singleton()->translate("Open a Directory"));
+			set_title("Open a Directory");
 			break;
 		case FILE_MODE_SAVE_FILE:
-			set_title(TranslationServer::get_singleton()->translate("Save a File"));
+			set_title("Save a File");
 	}
 }
 

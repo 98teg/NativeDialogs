@@ -31,7 +31,7 @@ void NativeAcceptDialog::_bind_methods() {
 }
 
 NativeAcceptDialog::NativeAcceptDialog() {
-	title = TranslationServer::get_singleton()->translate("Alert!");
+	title = "Alert!";
 	text = "";
 	icon = ICON_WARNING;
 }
@@ -82,8 +82,8 @@ void NativeAcceptDialog::show() {
 	}
 
 	message = new pfd::message(
-			title.utf8().get_data(),
-			text.utf8().get_data(),
+			String(TranslationServer::get_singleton()->translate(title)).utf8().get_data(),
+			String(TranslationServer::get_singleton()->translate(text)).utf8().get_data(),
 			choice,
 			pfd_icon);
 }

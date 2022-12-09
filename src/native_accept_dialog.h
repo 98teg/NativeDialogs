@@ -15,8 +15,6 @@ class NativeAcceptDialog : public Node {
 protected:
 	static void _bind_methods();
 
-	void process_button(pfd::button button);
-
 	void set_choice(pfd::choice p_choice);
 	pfd::choice get_choice();
 
