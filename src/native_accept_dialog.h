@@ -54,6 +54,6 @@ public:
 
 } // namespace godot
 
-VARIANT_ENUM_CAST(NativeAcceptDialog, Icon);
+VARIANT_ENUM_CAST(NativeAcceptDialog::Icon);
 
 #endif // NATIVEACCEPTDIALOG_H

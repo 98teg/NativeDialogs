@@ -222,7 +222,7 @@ void NativeFileDialog::add_filter(const String &p_filter, const String &p_descri
 	if (p_description.is_empty()) {
 		filters.push_back(p_filter);
 	} else {
-		filters.push_back(p_filter + " ; " + p_description);
+		filters.push_back(p_filter + String(" ; ") + p_description);
 	}
 }
 

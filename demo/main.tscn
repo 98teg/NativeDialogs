@@ -22,7 +22,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_7jcan")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -33,16 +33,13 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
-offset_top = 15.0
-offset_right = 1137.0
-offset_bottom = 633.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
-offset_right = 1127.0
-offset_bottom = 2225.0
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 15
@@ -50,57 +47,23 @@ theme_override_constants/margin_right = 45
 theme_override_constants/margin_bottom = 15
 
 [node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
-offset_left = 60.0
-offset_top = 15.0
-offset_right = 1082.0
-offset_bottom = 2210.0
+layout_mode = 2
 theme_override_constants/h_separation = 45
 theme_override_constants/v_separation = 30
 alignment = 1
 
 [node name="NativeAcceptDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_r21be")]
 custom_minimum_size = Vector2(720, 0)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 151.0
-offset_right = 871.0
-offset_bottom = 496.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
 
 [node name="NativeConfirmationDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("2_35kej")]
 custom_minimum_size = Vector2(720, 0)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 151.0
-offset_top = 526.0
-offset_right = 871.0
-offset_bottom = 1022.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
 
 [node name="NativeFileDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_mcjmb")]
 custom_minimum_size = Vector2(720, 0)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 151.0
-offset_top = 1052.0
-offset_right = 871.0
-offset_bottom = 1742.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
 
 [node name="NativeNotification" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_hnvye")]
 custom_minimum_size = Vector2(720, 0)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 151.0
-offset_top = 1772.0
-offset_right = 871.0
-offset_bottom = 2195.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2

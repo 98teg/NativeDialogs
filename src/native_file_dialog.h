@@ -83,7 +83,7 @@ public:
 
 } // namespace godot
 
-VARIANT_ENUM_CAST(NativeFileDialog, FileMode);
-VARIANT_ENUM_CAST(NativeFileDialog, Access);
+VARIANT_ENUM_CAST(NativeFileDialog::FileMode);
+VARIANT_ENUM_CAST(NativeFileDialog::Access);
 
 #endif // NATIVEFILEDIALOG_H

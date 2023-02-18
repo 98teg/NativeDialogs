@@ -37,6 +37,6 @@ public:
 
 } // namespace godot
 
-VARIANT_ENUM_CAST(NativeConfirmationDialog, ButtonsTexts);
+VARIANT_ENUM_CAST(NativeConfirmationDialog::ButtonsTexts);
 
 #endif // NATIVECONFIRMATIONDIALOG_H

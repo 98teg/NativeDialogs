@@ -44,6 +44,6 @@ public:
 
 } // namespace godot
 
-VARIANT_ENUM_CAST(NativeNotification, Icon);
+VARIANT_ENUM_CAST(NativeNotification::Icon);
 
 #endif // NATIVENOTIFICATION_H

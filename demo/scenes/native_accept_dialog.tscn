@@ -17,47 +17,36 @@ script = ExtResource("1_wtpim")
 unique_name_in_owner = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 2
 theme_override_constants/margin_left = 90
 theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 90
 theme_override_constants/margin_bottom = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-offset_left = 90.0
-offset_top = 60.0
-offset_right = 1062.0
-offset_bottom = 588.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-offset_right = 972.0
-offset_bottom = 31.0
+layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "NativeAcceptDialog"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 46.0
-offset_right = 972.0
-offset_bottom = 104.0
+layout_mode = 2
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
-offset_right = 792.0
-offset_bottom = 58.0
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
-offset_right = 792.0
-offset_bottom = 26.0
+layout_mode = 2
 text = "Title"
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
-offset_top = 26.0
-offset_right = 792.0
-offset_bottom = 58.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Alert!"
 caret_blink = true
@@ -65,20 +54,15 @@ caret_blink_interval = 0.5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
-offset_left = 822.0
-offset_right = 972.0
-offset_bottom = 58.0
+layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-offset_right = 150.0
-offset_bottom = 26.0
+layout_mode = 2
 text = "Icon"
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-offset_top = 26.0
-offset_right = 150.0
-offset_bottom = 58.0
+layout_mode = 2
 item_count = 4
 selected = 1
 popup/item_0/text = "Info"
@@ -91,67 +75,49 @@ popup/item_3/text = "Question"
 popup/item_3/id = 3
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 119.0
-offset_right = 972.0
-offset_bottom = 235.0
+layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
-offset_right = 972.0
-offset_bottom = 26.0
+layout_mode = 2
 text = "Text"
 
 [node name="_Text" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 90)
-offset_top = 26.0
-offset_right = 972.0
-offset_bottom = 116.0
+layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 250.0
-offset_right = 972.0
-offset_bottom = 308.0
+layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
-offset_right = 972.0
-offset_bottom = 26.0
+layout_mode = 2
 text = "Result"
 
 [node name="_Result" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
-offset_top = 26.0
-offset_right = 972.0
-offset_bottom = 58.0
+layout_mode = 2
 size_flags_horizontal = 3
 editable = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-offset_top = 323.0
-offset_right = 972.0
-offset_bottom = 376.0
+layout_mode = 2
 theme_override_constants/margin_top = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
-offset_top = 15.0
-offset_right = 972.0
-offset_bottom = 53.0
+layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 2
 
 [node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-offset_left = 779.0
-offset_right = 864.0
-offset_bottom = 38.0
+layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"GhostButton"
 text = "Hide"
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-offset_left = 879.0
-offset_right = 972.0
-offset_bottom = 38.0
+layout_mode = 2
 size_flags_vertical = 4
 text = "Show"
 
