@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3lywl2to6wuh"]
+
+[ext_resource type="Script" path="res://scenes/native_notification.gd" id="1_dl8uo"]
+[ext_resource type="Theme" uid="uid://dghnjlpplxvrd" path="res://main_theme.tres" id="1_kx2dd"]
+
+[node name="NativeNotification" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_kx2dd")
+script = ExtResource("1_dl8uo")
+
+[node name="_NativeNotification" type="NativeNotification" parent="."]
+unique_name_in_owner = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "NativeNotification"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 0
+
+[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+text = "Title"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Alert!"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Icon"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Info"
+popup/item_0/id = 0
+popup/item_1/text = "Warning"
+popup/item_1/id = 1
+popup/item_2/text = "Error"
+popup/item_2/id = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Text"
+
+[node name="_Text" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Send"
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1/LineEdit" to="_NativeNotification" method="set_title"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="_NativeNotification" method="set_icon"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/_Text" to="." method="text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/Button" to="_NativeNotification" method="send"]

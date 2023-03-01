@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyowfuspidj6l"]
+
+[ext_resource type="Theme" uid="uid://dghnjlpplxvrd" path="res://main_theme.tres" id="1_1bdvd"]
+[ext_resource type="Script" path="res://scenes/native_accept_dialog.gd" id="1_wtpim"]
+
+[node name="NativeAcceptDialog" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_1bdvd")
+script = ExtResource("1_wtpim")
+
+[node name="_NativeAcceptDialog" type="NativeAcceptDialog" parent="."]
+unique_name_in_owner = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "NativeAcceptDialog"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+text = "Title"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Alert!"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Icon"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+item_count = 4
+selected = 1
+popup/item_0/text = "Info"
+popup/item_0/id = 0
+popup/item_1/text = "Warning"
+popup/item_1/id = 1
+popup/item_2/text = "Error"
+popup/item_2/id = 2
+popup/item_3/text = "Question"
+popup/item_3/id = 3
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
+layout_mode = 2
+text = "Text"
+
+[node name="_Text" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Result"
+
+[node name="_Result" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"GhostButton"
+text = "Hide"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Show"
+
+[connection signal="cancelled" from="_NativeAcceptDialog" to="." method="set_cancelled"]
+[connection signal="confirmed" from="_NativeAcceptDialog" to="." method="set_confirmed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1/LineEdit" to="_NativeAcceptDialog" method="set_title"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="_NativeAcceptDialog" method="set_icon"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer1/_Text" to="." method="text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Button1" to="_NativeAcceptDialog" method="hide"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Button2" to="_NativeAcceptDialog" method="show"]

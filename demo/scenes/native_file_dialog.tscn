@@ -1,0 +1,372 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfhf2x2p1f5fv"]
+
+[ext_resource type="Script" path="res://scenes/native_file_dialog.gd" id="1_4eq6a"]
+[ext_resource type="Theme" uid="uid://dghnjlpplxvrd" path="res://main_theme.tres" id="1_kvkvm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5ge7"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.909804, 0.909804, 0.909804, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvo7c"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.909804, 0.909804, 0.909804, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="NativeFileDialog" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_kvkvm")
+script = ExtResource("1_4eq6a")
+
+[node name="_NativeFileDialog" type="NativeFileDialog" parent="."]
+unique_name_in_owner = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 690.0
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+offset_left = 90.0
+offset_top = 60.0
+offset_right = 1062.0
+offset_bottom = 630.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+offset_right = 972.0
+offset_bottom = 31.0
+theme_type_variation = &"HeaderSmall"
+text = "NativeFileDialog"
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 46.0
+offset_right = 972.0
+offset_bottom = 104.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+offset_right = 736.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer1/VBoxContainer"]
+offset_right = 736.0
+offset_bottom = 26.0
+text = "Title"
+
+[node name="_Title" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer1/VBoxContainer"]
+unique_name_in_owner = true
+offset_top = 26.0
+offset_right = 736.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+text = "Save a File"
+editable = false
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+offset_left = 766.0
+offset_top = 16.0
+offset_right = 972.0
+offset_bottom = 42.0
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer1/HBoxContainer"]
+offset_right = 162.0
+offset_bottom = 26.0
+text = "Mode Overrides Title"
+
+[node name="_Overrides" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer1/HBoxContainer"]
+unique_name_in_owner = true
+offset_left = 162.0
+offset_right = 206.0
+offset_bottom = 26.0
+button_pressed = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 119.0
+offset_right = 972.0
+offset_bottom = 177.0
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+offset_right = 129.0
+offset_bottom = 58.0
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+offset_right = 129.0
+offset_bottom = 26.0
+text = "File Mode"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+offset_top = 26.0
+offset_right = 129.0
+offset_bottom = 58.0
+item_count = 4
+selected = 3
+popup/item_0/text = "Open File"
+popup/item_0/id = 0
+popup/item_1/text = "Open Files"
+popup/item_1/id = 1
+popup/item_2/text = "Open Folder"
+popup/item_2/id = 2
+popup/item_3/text = "Save"
+popup/item_3/id = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+offset_left = 159.0
+offset_right = 280.0
+offset_bottom = 58.0
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+offset_right = 121.0
+offset_bottom = 26.0
+text = "Access"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+offset_top = 26.0
+offset_right = 121.0
+offset_bottom = 58.0
+item_count = 3
+selected = 0
+popup/item_0/text = "Resources"
+popup/item_0/id = 0
+popup/item_1/text = "User Data"
+popup/item_1/id = 1
+popup/item_2/text = "File System"
+popup/item_2/id = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+offset_left = 310.0
+offset_right = 972.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Lable" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+offset_right = 662.0
+offset_bottom = 26.0
+text = "Root Subfolder"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+offset_top = 26.0
+offset_right = 662.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 192.0
+offset_right = 972.0
+offset_bottom = 429.0
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
+offset_right = 972.0
+offset_bottom = 26.0
+text = "Filters"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
+offset_top = 26.0
+offset_right = 972.0
+offset_bottom = 237.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5ge7")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer"]
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 962.0
+offset_bottom = 205.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer"]
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 937.0
+offset_bottom = 187.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer"]
+offset_right = 922.0
+offset_bottom = 58.0
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+offset_right = 338.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+offset_right = 338.0
+offset_bottom = 26.0
+text = "Filter"
+
+[node name="_Filter" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1"]
+unique_name_in_owner = true
+offset_top = 26.0
+offset_right = 338.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+offset_left = 368.0
+offset_right = 707.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+offset_right = 339.0
+offset_bottom = 26.0
+text = "Description"
+
+[node name="_Description" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+offset_top = 26.0
+offset_right = 339.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+offset_left = 737.0
+offset_right = 922.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+offset_top = 10.0
+offset_right = 79.0
+offset_bottom = 48.0
+size_flags_vertical = 4
+text = "Add"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+offset_left = 94.0
+offset_top = 10.0
+offset_right = 185.0
+offset_bottom = 48.0
+size_flags_vertical = 4
+theme_type_variation = &"GhostButton"
+text = "Clear"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer"]
+offset_top = 73.0
+offset_right = 922.0
+offset_bottom = 172.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvo7c")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 90)
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 912.0
+offset_bottom = 93.0
+horizontal_scroll_mode = 0
+
+[node name="_Filters" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 444.0
+offset_right = 972.0
+offset_bottom = 502.0
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+offset_right = 972.0
+offset_bottom = 26.0
+text = "Result"
+
+[node name="_Result" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+offset_top = 26.0
+offset_right = 972.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+editable = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 517.0
+offset_right = 972.0
+offset_bottom = 570.0
+theme_override_constants/margin_top = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+offset_top = 15.0
+offset_right = 972.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+offset_left = 779.0
+offset_right = 864.0
+offset_bottom = 38.0
+size_flags_vertical = 4
+theme_type_variation = &"GhostButton"
+text = "Hide"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+offset_left = 879.0
+offset_right = 972.0
+offset_bottom = 38.0
+size_flags_vertical = 4
+text = "Show"
+
+[connection signal="dir_selected" from="_NativeFileDialog" to="." method="file_selected"]
+[connection signal="file_selected" from="_NativeFileDialog" to="." method="file_selected"]
+[connection signal="files_selected" from="_NativeFileDialog" to="." method="files_selected"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer1/VBoxContainer/_Title" to="_NativeFileDialog" method="set_title"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/HBoxContainer/_Overrides" to="." method="override_title"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer1/OptionButton" to="." method="select_file_mode"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/OptionButton" to="_NativeFileDialog" method="set_access"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/LineEdit" to="_NativeFileDialog" method="set_root_subfolder"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Button1" to="." method="add_filter"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer1/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Button2" to="." method="clear_filters"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Button1" to="_NativeFileDialog" method="hide"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Button2" to="_NativeFileDialog" method="show"]

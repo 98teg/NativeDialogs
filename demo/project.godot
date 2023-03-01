@@ -6,18 +6,24 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
 [application]
 
-config/name="demo"
-run/main_scene="res://Main.tscn"
+config/name="Native Dialogs"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/shadowed_variable=0
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/native_dialogs/plugin.cfg" )
+enabled=PackedStringArray("res://addons/native_dialogs/plugin.cfg")
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.85098, 0.85098, 0.85098, 1)
 environment/default_environment="res://default_env.tres"

@@ -1,0 +1,148 @@
+name: 🌟 Master
+
+on:
+  pull_request:
+    branches: [master]
+
+concurrency:
+  group: ci-${{github.actor}}-${{github.head_ref || github.run_number}}-${{github.ref}}-macos
+  cancel-in-progress: true
+
+jobs:
+  gdscript:
+    name: 💅 Linting / 🤖 GDScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip3 install git+https://github.com/Scony/godot-gdscript-toolkit.git
+      - run: bash -c 'for f in ./demo/**/*.gd; do gdlint "$f"; done'
+
+  cplusplus:
+    name: 💅 Linting / ➕ C++
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: jidicula/clang-format-action@v4.9.0
+        with:
+          check-path: src
+
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - identifier: windows-debug
+            os: windows-latest
+            name: 🏗 Builds / 🪟 Windows Debug
+            target: template_debug
+            platform: windows
+            arch: x86_64
+
+          - identifier: windows-release
+            os: windows-latest
+            name: 🏗 Builds / 🪟 Windows Release
+            target: template_release
+            platform: windows
+            arch: x86_64
+
+          - identifier: macos-debug
+            os: macos-latest
+            name: 🏗 Builds / 🍎 macOS (universal) Debug
+            target: template_debug
+            platform: macos
+            arch: universal
+
+          - identifier: macos-release
+            os: macos-latest
+            name: 🏗 Builds / 🍎 macOS (universal) Release
+            target: template_release
+            platform: macos
+            arch: universal
+
+          - identifier: linux-debug
+            os: ubuntu-latest
+            name: 🏗 Builds / 🐧 Linux Debug
+            runner: ubuntu-20.04
+            target: template_debug
+            platform: linux
+            arch: x86_64
+
+          - identifier: linux-release
+            os: ubuntu-latest
+            name: 🏗 Builds / 🐧 Linux Release
+            runner: ubuntu-20.04
+            target: template_release
+            platform: linux
+            arch: x86_64
+
+    runs-on: ${{matrix.os}}
+    name: ${{matrix.name}}
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Set up SCons
+        shell: bash
+        run: |
+          python -c "import sys; print(sys.version)"
+          python -m pip install scons
+          scons --version
+
+      - name: Compile godot-cpp
+        shell: sh
+        run: |
+          scons target='${{ matrix.target }}' platform='${{ matrix.platform }}' arch='${{ matrix.arch }}'
+        working-directory: godot-cpp
+
+      - name: Compile Extension
+        shell: sh
+        run: |
+          scons target='${{ matrix.target }}' platform='${{ matrix.platform }}' arch='${{ matrix.arch }}'
+
+      - name: Delete compilation files
+        if: ${{ matrix.platform == 'windows' }}
+        run: |
+          Remove-Item demo/addons/native_dialogs/bin/* -Include *.exp,*.lib,*.pdb -Force
+
+      - name: Upload binaries
+        uses: actions/upload-artifact@v3
+        with:
+          name: binaries
+          path: demo/addons/native_dialogs/bin/*
+
+  package:
+    name: 📦 Package
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create addon
+        run: |
+          mkdir addons
+          cp -R demo/addons/native_dialogs addons
+          cp LICENSE.md addons/native_dialogs
+          mkdir addons/native_dialogs/bin
+
+      - name: Download binaries
+        uses: actions/download-artifact@v3
+        with:
+          name: binaries
+          path: addons/native_dialogs/bin
+
+      - name: Create package
+        run: |
+          zip -r native_dialogs.zip addons
+
+      - name: Upload addon
+        uses: actions/upload-artifact@v3
+        with:
+          name: native_dialogs
+          path: native_dialogs.zip

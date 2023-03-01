@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsceba4s677re"]
+
+[ext_resource type="PackedScene" uid="uid://cyowfuspidj6l" path="res://scenes/native_accept_dialog.tscn" id="1_r21be"]
+[ext_resource type="Theme" uid="uid://dghnjlpplxvrd" path="res://main_theme.tres" id="1_xfap8"]
+[ext_resource type="PackedScene" uid="uid://bahfxvu3r7io" path="res://scenes/native_confirmation_dialog.tscn" id="2_35kej"]
+[ext_resource type="PackedScene" uid="uid://b3lywl2to6wuh" path="res://scenes/native_notification.tscn" id="3_hnvye"]
+[ext_resource type="PackedScene" uid="uid://bfhf2x2p1f5fv" path="res://scenes/native_file_dialog.tscn" id="3_mcjmb"]
+
+[sub_resource type="Gradient" id="Gradient_su64u"]
+colors = PackedColorArray(0.376471, 0.631373, 0.882353, 1, 0.67451, 0.980392, 0.988235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jcan"]
+gradient = SubResource("Gradient_su64u")
+fill_to = Vector2(0, 1)
+
+[node name="Main" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_7jcan")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xfap8")
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 15
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 45
+theme_override_constants/v_separation = 30
+alignment = 1
+
+[node name="NativeAcceptDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_r21be")]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+
+[node name="NativeConfirmationDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("2_35kej")]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+
+[node name="NativeFileDialog" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_mcjmb")]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+
+[node name="NativeNotification" parent="MarginContainer/ScrollContainer/MarginContainer/HFlowContainer" instance=ExtResource("3_hnvye")]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2

@@ -1,7 +1,6 @@
 [submodule "godot-cpp"]
 	path = godot-cpp
 	url = https://github.com/godotengine/godot-cpp
-	branch = 3.x
 [submodule "portable-file-dialogs"]
 	path = portable-file-dialogs
 	url = https://github.com/samhocevar/portable-file-dialogs
