@@ -2,6 +2,9 @@
 
 # Native Dialogs
 
+> **Warning**
+> The main branch of this repository now supports Godot 4.x. If you are looking for the Godot 3.x version, please check [this branch](https://github.com/98teg/NativeDialogs/tree/godot-3.x).
+
 Native Dialogs is a plugin for Godot that allows you to interact with OS-specific dialogs, such as notifications, messages and file dialogs. It adds four new nodes that wrap the functionality of the C++ Library [portable-file-dialogs](https://github.com/samhocevar/portable-file-dialogs).
 
 [`NativeAcceptDialog`](./doc/native_accept_dialog.md) is useful for small notifications to the user about an event. [`NativeConfirmationDialog`](#class-nativeconfirmationdialog) allows you to prompt the user about confirmation of actions. [`NativeNotification`](#class-nativenotification) would show the user a brief message and then fade away. And [`NativeFileDialog`](#class-nativefiledialog) is used to choose files and directories in the filesystem.
