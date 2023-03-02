@@ -60,7 +60,7 @@ Here is an overview on how to compile the plugin from source:
     ```
     scons
     ```
-5. If you have encountered any problems, check the [official Godot documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/gdnative/gdnative_cpp_example.html) on how to build a GDExtension plugin.
+5. If you have encountered any problems, check the [official Godot documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/gdextension_cpp_example.html) on how to build a GDExtension plugin.
 
 ## Classes documentation
 
