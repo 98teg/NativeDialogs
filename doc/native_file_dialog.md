@@ -40,6 +40,10 @@ Emitted when the user selects a file by double-clicking it or pressing the **OK*
 
 Emitted when the user selects multiple files.
 
+### `cancelled()`
+
+Emitted when the dialog is closed.
+
 ## Enumerations
 
 ### `enum FileMode`:

@@ -41,6 +41,8 @@ void NativeFileDialog::_bind_methods() {
 	ADD_SIGNAL(MethodInfo("files_selected", PropertyInfo(Variant::PACKED_STRING_ARRAY, "paths")));
 	ADD_SIGNAL(MethodInfo("dir_selected", PropertyInfo(Variant::STRING, "dir")));
 
+	ADD_SIGNAL(MethodInfo("cancelled"));
+
 	BIND_ENUM_CONSTANT(FILE_MODE_OPEN_FILE);
 	BIND_ENUM_CONSTANT(FILE_MODE_OPEN_FILES);
 	BIND_ENUM_CONSTANT(FILE_MODE_OPEN_DIR);
@@ -67,25 +69,39 @@ NativeFileDialog::~NativeFileDialog() {
 void NativeFileDialog::_process(float delta) {
 	if (open_file && open_file->ready(0)) {
 		PackedStringArray result = PackedStringArray();
-		for (int i = 0; i < open_file->result().size(); i++)
+		for (int i = 0; i < open_file->result().size(); i++) {
 			result.append(get_godot_path(open_file->result()[i]));
+		}
 
-		if (!result.is_empty())
-			emit_signal("files_selected", result);
+		if (!result.is_empty()) {
+			if (mode == FILE_MODE_OPEN_FILE && result.size() == 1) {
+				emit_signal("file_selected", result[0]);
+			} else {
+				emit_signal("files_selected", result);
+			}
+		} else {
+			emit_signal("cancelled");
+		}
 
 		hide();
 	} else if (save_file && save_file->ready(0)) {
 		String result = get_godot_path(save_file->result());
 
-		if (!result.is_empty())
+		if (!result.is_empty()) {
 			emit_signal("file_selected", result);
+		} else {
+			emit_signal("cancelled");
+		}
 
 		hide();
 	} else if (select_folder && select_folder->ready(0)) {
 		String result = get_godot_path(select_folder->result());
 
-		if (!result.is_empty())
+		if (!result.is_empty()) {
 			emit_signal("dir_selected", get_godot_path(select_folder->result()));
+		} else {
+			emit_signal("cancelled");
+		}
 
 		hide();
 	}
