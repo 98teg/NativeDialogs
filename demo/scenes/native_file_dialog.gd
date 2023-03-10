@@ -60,3 +60,7 @@ func files_selected(paths: Array[String]):
 	result.text = paths.reduce(
 		func(paths, path): return path if paths == "" else paths + ", " + path, ""
 	)
+
+
+func dialog_closed():
+	result.text = ""
