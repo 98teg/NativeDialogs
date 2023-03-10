@@ -22,7 +22,7 @@ This node would show the user a brief message and then fade away.
 
 ## Enumerations
 
-### `enum Icon`:
+### `enum Icon`
 
 ```gdscript
 Icon ICON_INFO = 0
@@ -56,7 +56,7 @@ void set_icon(Icon value)
 Icon get_icon()
 ```
 
-### `String dialog_text = ""`
+### `String notification_text = ""`
 
 The text displayed by the notification.
 

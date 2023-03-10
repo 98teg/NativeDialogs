@@ -14,8 +14,8 @@ NativeFileDialog is a dialog used to choose files and directories in the filesys
 |[`FileMode`](#enum-filemode)|[`file_mode`](#filemode-file_mode--3)|`3`|
 |`PoolStringArray`|[`filters`](#packedstringarray-filters--packedstringarray)|`PoolStringArray()`|
 |`bool`|[`mode_overrides_title`](#bool-mode_overrides_title--true)|`true`|
-|`String`|[`root_subfolder`](#String-root_subfolder--)|`""`|
-|`String`|[`title`](#String-title--save-a-file)|`"Save a File"`|
+|`String`|[`root_subfolder`](#string-root_subfolder--)|`""`|
+|`String`|[`title`](#string-title--save-a-file)|`"Save a File"`|
 
 ## Methods
 
@@ -46,7 +46,7 @@ Emitted when the dialog is closed.
 
 ## Enumerations
 
-### `enum FileMode`:
+### `enum FileMode`
 
 ```gdscript
 FileMode MODE_OPEN_FILE = 0
@@ -72,7 +72,7 @@ FileMode MODE_SAVE_FILE = 3
 
 The dialog will warn when a file exists.
 
-### `enum Access`:
+### `enum Access`
 
 ```gdscript
 Access ACCESS_RESOURCES = 0
@@ -91,7 +91,6 @@ Access ACCESS_FILESYSTEM = 2
 ```
 
 The dialog allows accessing files on the whole file system.
-
 
 ## Property Descriptions
 
@@ -164,10 +163,6 @@ Adds a comma-delimited file name `filter` option to the **FileDialog** with an o
 A `filter` should be of the form `"filename.extension"`, where filename and extension can be * to match any string. Filters starting with `.` (i.e. empty filenames) are not allowed.
 
 For example, a `filter` of `"*.png, *.jpg"` and a description of `"Images"` results in filter text `"Images (*.png, *.jpg)"`.
-
-### `void clear_filters()`
-
-Clear all the added filters in the dialog.
 
 ### `void clear_filters()`
 
