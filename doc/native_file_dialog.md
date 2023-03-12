@@ -97,7 +97,7 @@ The dialog allows accessing files on the whole file system.
 
 ### `Access access = 0`
 
-The file system access scope. See enum `Access` constants.
+The file system access scope. See enum `Access` constants. Changing this value would reset `root_subfolder`. So when using code, you need to set `access` before `root_subfolder`.
 
 ```gdscript
 void set_access(Access value)
