@@ -26,6 +26,17 @@ jobs:
         with:
           check-path: src
 
+  markdown:
+    name: 💅 Linting / 📝 markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: DavidAnson/markdownlint-cli2-action@v9
+        with:
+          globs: |
+            README.md
+            doc/**/*.md
+
   build:
     strategy:
       fail-fast: false

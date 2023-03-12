@@ -33,7 +33,7 @@ Emitted when the dialog is accepted, i.e. the OK button is pressed.
 
 ## Enumerations
 
-### `enum Icon`:
+### `enum Icon`
 
 ```gdscript
 Icon ICON_INFO = 0

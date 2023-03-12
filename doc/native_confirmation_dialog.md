@@ -16,7 +16,7 @@ Dialog for confirmation of actions. This dialog inherits from [`NativeAcceptDial
 
 ## Enumerations
 
-### `enum ButtonsTexts`:
+### `enum ButtonsTexts`
 
 ```gdscript
 ButtonsTexts BUTTONS_TEXTS_OK_CANCEL = 0
