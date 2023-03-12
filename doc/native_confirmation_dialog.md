@@ -22,13 +22,13 @@ Dialog for confirmation of actions. This dialog inherits from [`NativeAcceptDial
 ButtonsTexts BUTTONS_TEXTS_OK_CANCEL = 0
 ```
 
-Pressing `OK` would emit the [`confirmed`](./native_accept_dialog.md#confirmed) signal and pressing `Cancel` would emit the [`cancelled`](./native_accept_dialog.md#cancelled) signal.
+Pressing `OK` would emit the [`confirmed`](./native_accept_dialog.md#confirmed) signal and pressing `Cancel` would emit the [`canceled`](./native_accept_dialog.md#canceled) signal.
 
 ```gdscript
 Icon BUTTONS_TEXTS_YES_NO = 1
 ```
 
-Pressing `Yes` would emit the [`confirmed`](./native_accept_dialog.md#confirmed) signal and pressing `No` would emit the [`cancelled`](./native_accept_dialog.md#cancelled) signal.
+Pressing `Yes` would emit the [`confirmed`](./native_accept_dialog.md#confirmed) signal and pressing `No` would emit the [`canceled`](./native_accept_dialog.md#canceled) signal.
 
 ## Property Descriptions
 

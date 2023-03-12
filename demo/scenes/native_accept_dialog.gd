@@ -14,5 +14,5 @@ func set_confirmed():
 	result.text = "Confirmed"
 
 
-func set_cancelled():
-	result.text = "Cancelled"
+func set_canceled():
+	result.text = "Canceled"

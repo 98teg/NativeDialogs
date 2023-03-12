@@ -276,7 +276,7 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Show"
 
-[connection signal="cancelled" from="_NativeFileDialog" to="." method="dialog_closed"]
+[connection signal="canceled" from="_NativeFileDialog" to="." method="dialog_closed"]
 [connection signal="dir_selected" from="_NativeFileDialog" to="." method="file_selected"]
 [connection signal="file_selected" from="_NativeFileDialog" to="." method="file_selected"]
 [connection signal="files_selected" from="_NativeFileDialog" to="." method="files_selected"]

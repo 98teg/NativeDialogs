@@ -41,7 +41,7 @@ void NativeFileDialog::_bind_methods() {
 	ADD_SIGNAL(MethodInfo("files_selected", PropertyInfo(Variant::PACKED_STRING_ARRAY, "paths")));
 	ADD_SIGNAL(MethodInfo("dir_selected", PropertyInfo(Variant::STRING, "dir")));
 
-	ADD_SIGNAL(MethodInfo("cancelled"));
+	ADD_SIGNAL(MethodInfo("canceled"));
 
 	BIND_ENUM_CONSTANT(FILE_MODE_OPEN_FILE);
 	BIND_ENUM_CONSTANT(FILE_MODE_OPEN_FILES);
@@ -80,7 +80,7 @@ void NativeFileDialog::_process(float delta) {
 				emit_signal("files_selected", result);
 			}
 		} else {
-			emit_signal("cancelled");
+			emit_signal("canceled");
 		}
 
 		hide();
@@ -90,7 +90,7 @@ void NativeFileDialog::_process(float delta) {
 		if (!result.is_empty()) {
 			emit_signal("file_selected", result);
 		} else {
-			emit_signal("cancelled");
+			emit_signal("canceled");
 		}
 
 		hide();
@@ -100,7 +100,7 @@ void NativeFileDialog::_process(float delta) {
 		if (!result.is_empty()) {
 			emit_signal("dir_selected", get_godot_path(select_folder->result()));
 		} else {
-			emit_signal("cancelled");
+			emit_signal("canceled");
 		}
 
 		hide();
