@@ -27,7 +27,7 @@ jobs:
           check-path: src
 
   markdown:
-    name: 💅 Linting / 📝 markdown
+    name: 💅 Linting / 📝 Markdown
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -36,6 +36,13 @@ jobs:
           globs: |
             README.md
             doc/**/*.md
+
+  spelling:
+    name: 💅 Linting / 👓 Spelling
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: codespell-project/actions-codespell@v1
 
   build:
     strategy:

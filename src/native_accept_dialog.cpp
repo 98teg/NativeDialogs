@@ -22,7 +22,7 @@ void NativeAcceptDialog::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("hide"), &NativeAcceptDialog::hide);
 
 	ADD_SIGNAL(MethodInfo("confirmed"));
-	ADD_SIGNAL(MethodInfo("cancelled"));
+	ADD_SIGNAL(MethodInfo("canceled"));
 
 	BIND_ENUM_CONSTANT(ICON_INFO);
 	BIND_ENUM_CONSTANT(ICON_WARNING);
@@ -49,7 +49,7 @@ void NativeAcceptDialog::_process(float delta) {
 	if (button == pfd::button::ok || button == pfd::button::yes) {
 		emit_signal("confirmed");
 	} else {
-		emit_signal("cancelled");
+		emit_signal("canceled");
 	}
 
 	hide();

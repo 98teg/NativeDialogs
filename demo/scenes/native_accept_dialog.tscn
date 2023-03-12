@@ -121,7 +121,7 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Show"
 
-[connection signal="cancelled" from="_NativeAcceptDialog" to="." method="set_cancelled"]
+[connection signal="canceled" from="_NativeAcceptDialog" to="." method="set_canceled"]
 [connection signal="confirmed" from="_NativeAcceptDialog" to="." method="set_confirmed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1/LineEdit" to="_NativeAcceptDialog" method="set_title"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="_NativeAcceptDialog" method="set_icon"]

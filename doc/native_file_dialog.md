@@ -40,7 +40,7 @@ Emitted when the user selects a file by double-clicking it or pressing the **OK*
 
 Emitted when the user selects multiple files.
 
-### `cancelled()`
+### `canceled()`
 
 Emitted when the dialog is closed.
 

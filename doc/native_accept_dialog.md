@@ -23,7 +23,7 @@ This dialog is useful for small notifications to the user about an event. It can
 
 ## Signals
 
-### `cancelled()`
+### `canceled()`
 
 Emitted when the dialog is closed.
 
