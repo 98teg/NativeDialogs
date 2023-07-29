@@ -1,6 +1,14 @@
 [configuration]
 
 entry_symbol = "native_dialogs_init"
+compatibility_minimum = 4.1
+
+[icons]
+
+NativeAcceptDialog = "res://addons/native_dialogs/icons/native_accept_dialog.svg"
+NativeConfirmationDialog = "res://addons/native_dialogs/icons/native_confirmation_dialog.svg"
+NativeFileDialog = "res://addons/native_dialogs/icons/native_file_dialog.svg"
+NativeNotification = "res://addons/native_dialogs/icons/native_notification.svg"
 
 [libraries]
 
