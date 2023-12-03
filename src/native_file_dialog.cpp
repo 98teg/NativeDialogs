@@ -215,9 +215,8 @@ NativeFileDialog::Access NativeFileDialog::get_access() const {
 }
 
 void NativeFileDialog::set_root_subfolder(const String &p_root) {
-	ERR_FAIL_COND_MSG(!DirAccess::dir_exists_absolute(get_root_string() + p_root), "root_subfolder must be an existing sub-directory.");
-
 	root_subfolder = p_root;
+	ERR_FAIL_COND_MSG(!DirAccess::dir_exists_absolute(get_root_string() + p_root), "root_subfolder must be an existing sub-directory.");
 }
 
 String NativeFileDialog::get_root_subfolder() const {
