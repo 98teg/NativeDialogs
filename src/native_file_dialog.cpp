@@ -117,20 +117,27 @@ void NativeFileDialog::show() {
 
 	hide();
 
-	const char *title = String(TranslationServer::get_singleton()->translate(get_title())).utf8().get_data();
-
 	if (mode == FILE_MODE_OPEN_FILE || mode == FILE_MODE_OPEN_FILES) {
-		pfd::opt option = mode == FILE_MODE_OPEN_FILES ? pfd::opt::multiselect : pfd::opt::none;
-
-		open_file = new pfd::open_file(title, get_pfd_path(), get_pfd_filters(), option);
+		open_file = new pfd::open_file(
+				String(TranslationServer::get_singleton()->translate(title)).utf8().get_data(),
+				get_pfd_path(),
+				get_pfd_filters(),
+				mode == FILE_MODE_OPEN_FILES ? pfd::opt::multiselect : pfd::opt::none);
 	}
 
 	if (mode == FILE_MODE_SAVE_FILE) {
-		save_file = new pfd::save_file(title, get_pfd_path(), get_pfd_filters(), pfd::opt::none);
+		save_file = new pfd::save_file(
+				String(TranslationServer::get_singleton()->translate(title)).utf8().get_data(),
+				get_pfd_path(),
+				get_pfd_filters(),
+				pfd::opt::none);
 	}
 
 	if (mode == FILE_MODE_OPEN_DIR) {
-		select_folder = new pfd::select_folder(title, get_pfd_path(), pfd::opt::none);
+		select_folder = new pfd::select_folder(
+				String(TranslationServer::get_singleton()->translate(title)).utf8().get_data(),
+				get_pfd_path(),
+				pfd::opt::none);
 	}
 }
 
