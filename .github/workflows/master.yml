@@ -13,7 +13,7 @@ jobs:
     name: 💅 Linting / 🤖 GDScript
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: pip3 install "gdtoolkit==4.*"
       - run: bash -c 'for f in ./demo/**/*.gd; do gdlint "$f"; done'
 
@@ -21,7 +21,7 @@ jobs:
     name: 💅 Linting / ➕ C++
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: jidicula/clang-format-action@v4.9.0
         with:
           check-path: src
@@ -30,8 +30,8 @@ jobs:
     name: 💅 Linting / 📝 Markdown
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: DavidAnson/markdownlint-cli2-action@v9
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v15
         with:
           globs: |
             README.md
@@ -41,7 +41,7 @@ jobs:
     name: 💅 Linting / 👓 Spelling
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: codespell-project/actions-codespell@v1
 
   build:
@@ -97,12 +97,12 @@ jobs:
     name: ${{matrix.name}}
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
@@ -130,7 +130,7 @@ jobs:
           Remove-Item demo/addons/native_dialogs/bin/* -Include *.exp,*.lib,*.pdb -Force
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact/merge@v4
         with:
           name: binaries
           path: demo/addons/native_dialogs/bin/*
@@ -140,7 +140,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Create addon
         run: |
@@ -150,7 +150,7 @@ jobs:
           mkdir addons/native_dialogs/bin
 
       - name: Download binaries
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: binaries
           path: addons/native_dialogs/bin
@@ -160,7 +160,7 @@ jobs:
           zip -r native_dialogs.zip addons
 
       - name: Upload addon
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: native_dialogs
           path: native_dialogs.zip
