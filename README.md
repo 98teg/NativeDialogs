@@ -50,7 +50,7 @@ If you want to instantiate nodes using GDScript, you may follow this example:
 
 Here is an overview on how to compile the plugin from source:
 
-1. Check the [official Godot documentation](https://docs.godotengine.org/es/stable/development/compiling/index.html) on how to compile the engine. You won't need to compile it, but it would help you install the necessary dependencies on your target platform.
+1. Check the [official Godot documentation](https://docs.godotengine.org/en/stable/engine_details/development/compiling/) on how to compile the engine. You won't need to compile it, but it would help you install the necessary dependencies on your target platform.
 2. Clone this repository recursively:
 
     ```bash
@@ -72,7 +72,7 @@ Here is an overview on how to compile the plugin from source:
     scons
     ```
 
-5. If you have encountered any problems, check the [official Godot documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/gdextension_cpp_example.html) on how to build a GDExtension plugin.
+5. If you have encountered any problems, check the [official Godot documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/cpp/gdextension_cpp_example.html) on how to build a GDExtension plugin.
 
 ## Classes documentation
 
